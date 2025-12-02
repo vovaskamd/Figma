@@ -3,7 +3,7 @@ import { Camera, PartyPopper, Smile, Award } from 'lucide-react';
 import chickCamera1 from 'figma:asset/d3fb84caade5ca9ed81ce71c69b1a26d159934c7.png';
 import chickCamera2 from 'figma:asset/592818c2f7a91fe3cdbb3735356182fccb24b783.png';
 import chickBalloons1 from 'figma:asset/27739d096c8f79bd12bbb3a2f825330e62d8546e.png';
-import chickHappy from 'figma:asset/6e5480727e9e6d0d6c87c9f14ba56f065b8f5f5f.png';
+import chickHappy from 'figma:asset/a0f0ce64c4a871ce7d43dd9513719a9d683f0ae4.png';
 
 export function StatsSection() {
   const stats = [
@@ -91,7 +91,7 @@ export function StatsSection() {
 
                 {/* Icon or Image */}
                 <motion.div
-                  className={`inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 ${stat.image ? 'bg-white shadow-md' : `bg-gradient-to-br ${stat.color}`} rounded-full mb-4 overflow-hidden`}
+                  className={`inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 ${stat.image ? '' : `bg-gradient-to-br ${stat.color} rounded-full`} mb-4`}
                   whileHover={{ 
                     rotate: [0, -10, 10, 0],
                     scale: 1.1
@@ -102,7 +102,7 @@ export function StatsSection() {
                     <img 
                       src={stat.image} 
                       alt={stat.label}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   ) : (
                     <stat.icon className="w-7 h-7 md:w-8 md:h-8 text-white" />

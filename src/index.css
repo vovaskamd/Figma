@@ -874,10 +874,6 @@
     height: calc(var(--spacing) * 12);
   }
 
-  .h-14 {
-    height: calc(var(--spacing) * 14);
-  }
-
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
@@ -988,10 +984,6 @@
 
   .w-12 {
     width: calc(var(--spacing) * 12);
-  }
-
-  .w-14 {
-    width: calc(var(--spacing) * 14);
   }
 
   .w-16 {
@@ -2081,6 +2073,10 @@
     fill: var(--color-yellow-400);
   }
 
+  .object-contain {
+    object-fit: contain;
+  }
+
   .object-cover {
     object-fit: cover;
   }
@@ -2943,8 +2939,8 @@
   }
 
   @media (width >= 48rem) {
-    .md\:h-16 {
-      height: calc(var(--spacing) * 16);
+    .md\:h-24 {
+      height: calc(var(--spacing) * 24);
     }
   }
 
@@ -2961,8 +2957,8 @@
   }
 
   @media (width >= 48rem) {
-    .md\:w-16 {
-      width: calc(var(--spacing) * 16);
+    .md\:w-24 {
+      width: calc(var(--spacing) * 24);
     }
   }
 
