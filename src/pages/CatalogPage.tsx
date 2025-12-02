@@ -1,12 +1,12 @@
 import { motion } from 'motion/react';
 import { Heart, Star, Gift, PartyPopper, Camera, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
-interface CatalogPageProps {
-  onNavigate: (page: string) => void;
-}
+export function CatalogPage() {
+  const navigate = useNavigate();
+  const onNavigate = (page: string) => navigate(page === 'home' ? '/' : `/${page}`);
 
-export function CatalogPage({ onNavigate }: CatalogPageProps) {
   const whatsappLink = (text: string) =>
     `https://api.whatsapp.com/send?phone=972542330001&text=${encodeURIComponent(text)}`;
 

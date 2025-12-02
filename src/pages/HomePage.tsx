@@ -1,12 +1,12 @@
 import { motion } from 'motion/react';
 import { Camera, Gift, Sparkles, Star, Heart, PartyPopper } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
-interface HomePageProps {
-  onNavigate: (page: string) => void;
-}
+export function HomePage() {
+  const navigate = useNavigate();
+  const onNavigate = (page: string) => navigate(page === 'home' ? '/' : `/${page}`);
 
-export function HomePage({ onNavigate }: HomePageProps) {
   const whatsappLink = (text: string) =>
     `https://api.whatsapp.com/send?phone=972542330001&text=${encodeURIComponent(text)}`;
 
@@ -65,7 +65,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-500 to-purple-400 opacity-90" />
-        
+
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
@@ -242,7 +242,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             />
           ))}
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

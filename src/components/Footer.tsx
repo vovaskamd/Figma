@@ -1,14 +1,12 @@
 import { Camera, Phone, Mail, MapPin, Flower2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-interface FooterProps {
-  onNavigate: (page: string) => void;
-}
-
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer() {
+  const navigate = useNavigate();
   const whatsappLink = 'https://api.whatsapp.com/send?phone=972542330001&text=שלום, אני רוצה לשמוע עוד פרטים';
 
   const handleNavClick = (pageId: string) => {
-    onNavigate(pageId);
+    navigate(pageId === 'home' ? '/' : `/${pageId}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { Camera, Baby, Star, Gift, Phone, Sparkles, Menu, X, MessageCircle, Palette, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-interface NavigationProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-export function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPage = location.pathname.replace('/', '') || 'home';
 
   const navItems = [
     { id: 'home', label: 'ראשי', icon: Camera },
@@ -26,7 +25,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const phoneNumber = 'tel:+972542330001';
 
   const handleNavClick = (pageId: string) => {
-    onNavigate(pageId);
+    navigate(pageId === 'home' ? '/' : `/${pageId}`);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -40,7 +39,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <motion.div 
+            <motion.div
               className="bg-gradient-to-br from-[#6b1a3d] to-[#4d184d] p-3 rounded-full"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
@@ -60,11 +59,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 <li key={item.id}>
                   <button
                     onClick={() => handleNavClick(item.id)}
-                    className={`transition-colors px-3 py-2 rounded-lg ${
-                      currentPage === item.id
+                    className={`transition-colors px-3 py-2 rounded-lg ${currentPage === item.id
                         ? 'text-purple-600 bg-purple-50 font-semibold'
                         : 'text-slate-700 hover:text-purple-600 hover:bg-purple-50'
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </button>
@@ -140,8 +138,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                       top: '100%',
                     }}
                     initial={{ y: 0, opacity: 0 }}
-                    animate={{ 
-                      y: -200, 
+                    animate={{
+                      y: -200,
                       opacity: [0, 0.6, 0],
                       x: [0, Math.sin(i) * 20]
                     }}
@@ -173,7 +171,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                       top: `${Math.random() * 100}%`,
                     }}
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ 
+                    animate={{
                       scale: [0, 1, 0],
                       opacity: [0, 1, 0],
                       rotate: [0, 180, 360]
@@ -209,11 +207,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                     >
                       <motion.button
                         onClick={() => handleNavClick(item.id)}
-                        className={`w-full text-right transition-colors px-4 py-3 rounded-lg ${
-                          currentPage === item.id
+                        className={`w-full text-right transition-colors px-4 py-3 rounded-lg ${currentPage === item.id
                             ? 'text-purple-600 bg-purple-50 font-semibold'
                             : 'text-slate-700 hover:text-purple-600 hover:bg-purple-50'
-                        }`}
+                          }`}
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -245,7 +242,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                       <MessageCircle className="w-5 h-5" />
                       <span>שלח הודעה בוואטסאפ</span>
                     </motion.a>
-                    
+
                     {/* Call Button - Argaman colors */}
                     <motion.a
                       href={phoneNumber}
