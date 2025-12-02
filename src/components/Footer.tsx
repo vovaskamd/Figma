@@ -1,4 +1,5 @@
 import { Camera, Phone, Mail, MapPin, Flower2 } from 'lucide-react';
+import { inlineColors } from '../styles/design-system';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -13,13 +14,23 @@ export function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#f5edf8] text-slate-800 py-12 border-t border-[#e0e0e0]">
+    <footer 
+      className="text-slate-800 py-12 border-t border-[#e0e0e0]"
+      style={{
+        backgroundColor: `${inlineColors.primary.blush}20`
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Company Info */}
           <div className="text-center md:text-right bg-[rgba(230,23,23,0)]">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-4 bg-[rgba(32,255,110,0)]">
-              <div className="bg-gradient-to-br from-[#6b1a3d] to-[#4d184d] p-3 rounded-full">
+              <div 
+                style={{
+                  background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
+                }}
+                className="p-3 rounded-full"
+              >
                 <Flower2 className="w-6 h-6 text-white" />
               </div>
               <div className="text-right">
@@ -39,7 +50,16 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNavClick('home')}
-                  className="text-slate-400 hover:text-[#8b2e3f] transition-colors"
+                  className="text-slate-400 transition-colors"
+                  style={{
+                    color: '#94a3b8'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.light;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#94a3b8';
+                  }}
                 >
                   ראשי
                 </button>
@@ -47,7 +67,16 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNavClick('brit')}
-                  className="text-slate-400 hover:text-[#8b2e3f] transition-colors"
+                  className="text-slate-400 transition-colors"
+                  style={{
+                    color: '#94a3b8'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.light;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#94a3b8';
+                  }}
                 >
                   חבילות לברית
                 </button>
@@ -55,7 +84,16 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNavClick('bar-mitzvah')}
-                  className="text-slate-400 hover:text-[#8b2e3f] transition-colors"
+                  className="text-slate-400 transition-colors"
+                  style={{
+                    color: '#94a3b8'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.light;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#94a3b8';
+                  }}
                 >
                   חבילות לבר מצווה
                 </button>
@@ -63,7 +101,16 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNavClick('catalog')}
-                  className="text-slate-400 hover:text-[#8b2e3f] transition-colors"
+                  className="text-slate-400 transition-colors"
+                  style={{
+                    color: '#94a3b8'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.light;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#94a3b8';
+                  }}
                 >
                   קטלוג מוצרים
                 </button>
@@ -71,7 +118,16 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => handleNavClick('contact')}
-                  className="text-slate-400 hover:text-[#8b2e3f] transition-colors"
+                  className="text-slate-400 transition-colors"
+                  style={{
+                    color: '#94a3b8'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.light;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#94a3b8';
+                  }}
                 >
                   צור קשר
                 </button>
@@ -88,7 +144,16 @@ export function Footer({ onNavigate }: FooterProps) {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#8b2e3f] hover:text-[#6b1a3d] transition-colors"
+                  className="inline-flex items-center gap-2 transition-colors"
+                  style={{
+                    color: inlineColors.primary.light
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.deep;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = inlineColors.primary.light;
+                  }}
                 >
                   <Phone className="w-4 h-4" />
                   054-233-0001

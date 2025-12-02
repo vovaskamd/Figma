@@ -1,99 +1,172 @@
-/**
- * Argaman Design System
- * Единая система дизайна для всего сайта
- */
+// ============================================
+// 🎨 ARGAMAN DESIGN SYSTEM - ЦВЕТОВАЯ ПАЛИТРА
+// ============================================
+// Все цвета сайта в одном месте!
+// Для изменения палитры - меняйте только здесь
 
-// 🎨 Цветовая палитра
 export const colors = {
-  // Основные цвета
+  // Роскошная палитра: глубокий фиолетовый → пурпурный → коралловый → золотой
   primary: {
-    wine: '#6b1a3d',
-    purple: '#4d184d',
-    winePink: '#8b2e3f',
-    lilac: '#c9a9b8',
+    deep: '#3D1152',      // Глубокий фиолетовый (основной)
+    medium: '#A03078',    // Средний пурпурно-розовый (вторичный)
+    light: '#D64B6A',     // Коралловый розовый (третичный)
+    blush: '#E8B15C',     // Золотисто-желтый (акцент)
+    paleBlush: '#FFF9F0', // Очень светлый кремовый (фон)
   },
-  // Градиенты
+
+  // Градиенты (готовые классы)
   gradients: {
-    primary: 'from-purple-600 to-pink-500',
-    wine: 'from-[#6b1a3d] to-[#8b2e3f]',
-    purpleWine: 'from-[#4d184d] to-[#6b1a3d]',
-    full: 'from-purple-600 via-pink-500 to-purple-400',
+    // Основные градиенты
+    primary: 'bg-gradient-to-r from-[#3D1152] to-[#A03078]',
+    primaryBr: 'bg-gradient-to-br from-[#3D1152] to-[#A03078]',
+    secondary: 'bg-gradient-to-r from-[#A03078] to-[#D64B6A]',
+    accent: 'bg-gradient-to-r from-[#3D1152] to-[#D64B6A]',
+    
+    // Hero градиенты
+    hero: 'bg-gradient-to-br from-[#3D1152] via-[#A03078] to-[#D64B6A]',
+    heroAlt: 'bg-gradient-to-r from-[#3D1152] via-[#A03078] to-[#D64B6A]',
+    
+    // Фоновые градиенты
+    bgLight: 'bg-gradient-to-br from-[#FFF9F0] via-white to-[#E8B15C]/10',
+    bgSoft: 'bg-gradient-to-br from-[#E8B15C]/10 to-[#FFF9F0]',
+    
+    // Для текста
+    textPrimary: 'bg-gradient-to-r from-[#3D1152] to-[#D64B6A] bg-clip-text text-transparent',
+    textSecondary: 'bg-gradient-to-r from-[#3D1152] via-[#A03078] to-[#D64B6A] bg-clip-text text-transparent',
   },
-  // Фоны
-  backgrounds: {
-    light: '#faf8fb',
-    lightGradient: 'from-[#faf8fb] via-white to-[#f9f5f7]',
-    purplePink: 'from-purple-50 to-pink-50',
+
+  // Цвета для текста
+  text: {
+    primary: 'text-[#3D1152]',
+    secondary: 'text-[#A03078]',
+    accent: 'text-[#D64B6A]',
+    dark: 'text-slate-800',
+    muted: 'text-slate-600',
+    light: 'text-slate-400',
+  },
+
+  // Цвета для фона
+  bg: {
+    primary: 'bg-[#3D1152]',
+    secondary: 'bg-[#A03078]',
+    accent: 'bg-[#D64B6A]',
+    blush: 'bg-[#E8B15C]',
+    pale: 'bg-[#FFF9F0]',
+    white: 'bg-white',
+  },
+
+  // Цвета для границ
+  border: {
+    primary: 'border-[#3D1152]',
+    secondary: 'border-[#A03078]',
+    accent: 'border-[#D64B6A]',
+    blush: 'border-[#E8B15C]',
+    light: 'border-slate-200',
+  },
+
+  // Hover состояния
+  hover: {
+    text: 'hover:text-[#D64B6A]',
+    bg: 'hover:bg-[#E8B15C]/10',
+    border: 'hover:border-[#D64B6A]',
+  },
+
+  // Специальные цвета
+  special: {
+    whatsapp: 'bg-gradient-to-r from-[#25D366] to-[#128C7E]',
+    success: 'bg-green-500',
+    error: 'bg-red-500',
+    warning: 'bg-yellow-500',
+  },
+
+  // Прозрачности для декоративных элементов
+  opacity: {
+    primary5: '#3D11520D',    // 5%
+    primary10: '#3D11521A',   // 10%
+    primary20: '#3D115233',   // 20%
+    blush10: '#E8B15C1A',     // 10%
+    blush20: '#E8B15C33',     // 20%
+  },
+} as const;
+
+// Массив цветов для анимаций (шары, конфетти и т.д.)
+export const animationColors = [
+  '#3D1152', // deep purple
+  '#A03078', // medium magenta
+  '#D64B6A', // coral pink
+  '#E8B15C', // golden yellow
+  '#FFF9F0', // pale cream
+];
+
+// Экспорт для использования в inline styles
+export const inlineColors = {
+  primary: {
+    deep: '#3D1152',
+    medium: '#A03078',
+    light: '#D64B6A',
+    blush: '#E8B15C',
+    paleBlush: '#FFF9F0',
   },
 };
 
-// 📐 Spacing
-export const spacing = {
-  section: 'py-16 md:py-20',
-  sectionLarge: 'py-20 md:py-24',
-  container: 'container mx-auto px-4',
-};
+// Готовые комбинации для кнопок
+export const buttonStyles = {
+  primary: `px-8 py-4 ${colors.gradients.primary} text-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold`,
+  secondary: `px-8 py-4 bg-white ${colors.text.primary} rounded-full border-2 ${colors.border.primary} hover:bg-[#E8B15C]/10 transition-all`,
+  ghost: `px-8 py-4 bg-[#3D1152]/20 backdrop-blur-sm border-2 border-white text-white rounded-full hover:bg-white/30 transition-all`,
+  whatsapp: `px-8 py-4 ${colors.special.whatsapp} text-white rounded-full hover:shadow-xl transition-all transform hover:scale-105`,
+} as const;
 
-// 🎭 Анимации
+// Алиас для совместимости
+export const buttons = {
+  primary: `inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#3D1152] to-[#A03078] text-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold`,
+  secondary: `inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#3D1152] rounded-full border-2 border-[#3D1152] hover:bg-[#E8B15C]/10 transition-all`,
+  large: `inline-flex items-center justify-center gap-2 px-10 py-5 bg-gradient-to-r from-[#3D1152] to-[#A03078] text-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold text-lg`,
+  outline: `inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-[#3D1152] rounded-full border-2 border-[#3D1152] hover:bg-[#3D1152] hover:text-white transition-all`,
+} as const;
+
+// Стили для текста
+export const text = {
+  heading: 'text-4xl md:text-5xl text-slate-800',
+  gradientHeading: 'text-4xl md:text-5xl bg-gradient-to-r from-[#3D1152] to-[#D64B6A] bg-clip-text text-transparent',
+  subheading: 'text-2xl md:text-3xl text-slate-700',
+  body: 'text-base text-slate-600',
+  muted: 'text-sm text-slate-500',
+} as const;
+
+// Готовые стили для карточек
+export const cardStyles = {
+  basic: `bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-[#E8B15C]/20`,
+  featured: `${colors.gradients.accent} text-white rounded-2xl shadow-2xl transform scale-105`,
+  soft: `bg-gradient-to-br from-[#E8B15C]/10 to-[#FFF9F0] rounded-2xl p-8 shadow-md hover:shadow-xl transition-all`,
+} as const;
+
+// Готовые стили для секций
+export const sectionStyles = {
+  light: `py-20 ${colors.gradients.bgLight}`,
+  soft: `py-20 ${colors.gradients.bgSoft}`,
+  hero: `py-20 ${colors.gradients.hero} text-white`,
+  white: 'py-20 bg-white',
+} as const;
+
+// Анимации для Motion
 export const animations = {
   fadeInUp: {
     initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
   fadeIn: {
     initial: { opacity: 0 },
-    animate: { opacity: 1 },
+    whileInView: { opacity: 1 },
+    viewport: { once: true },
     transition: { duration: 0.6 },
   },
   scaleIn: {
     initial: { scale: 0.9, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    transition: { duration: 0.8 },
-  },
-  slideUp: {
-    initial: { opacity: 0, y: 50 },
-    whileInView: { opacity: 1, y: 0 },
+    whileInView: { scale: 1, opacity: 1 },
     viewport: { once: true },
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6 },
   },
-};
-
-// 🔘 Стили кнопок
-export const buttons = {
-  primary: 'px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105',
-  secondary: 'px-8 py-3 bg-white text-purple-600 rounded-full border-2 border-purple-600 hover:bg-purple-50 transition-all',
-  large: 'px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105',
-  outline: 'px-6 py-3 bg-white text-purple-600 rounded-full border-2 border-purple-600 hover:bg-purple-50 transition-colors',
-};
-
-// 📦 Стили карточек
-export const cards = {
-  base: 'bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-[#c9a9b8]/20',
-  featured: 'bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-2xl shadow-2xl transform scale-105',
-  hover: 'hover:shadow-2xl hover:-translate-y-2 transition-all duration-300',
-};
-
-// 📝 Стили текста
-export const text = {
-  gradientHeading: 'bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent',
-  heading: 'text-slate-800',
-  subheading: 'text-slate-600',
-  light: 'text-slate-500',
-  white: 'text-white',
-};
-
-// 🎨 Декоративные элементы
-export const decorative = {
-  blob: 'absolute w-96 h-96 rounded-full blur-3xl',
-  blobPurple: 'absolute w-96 h-96 bg-gradient-to-br from-[#6b1a3d]/5 to-transparent rounded-full blur-3xl',
-  blobLilac: 'absolute w-96 h-96 bg-gradient-to-tl from-[#c9a9b8]/10 to-transparent rounded-full blur-3xl',
-  divider: 'h-1 bg-gradient-to-r from-transparent via-purple-600 to-transparent',
-};
-
-// 📊 Сетки
-export const grids = {
-  features: 'grid grid-cols-1 md:grid-cols-3 gap-8',
-  packages: 'grid grid-cols-1 md:grid-cols-3 gap-8',
-  gallery: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6',
-};
+} as const;

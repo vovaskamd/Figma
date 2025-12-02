@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { colors, inlineColors } from '../styles/design-system';
 
 export function BarMitzvahPage() {
   const whatsappLink = (text: string) =>
@@ -24,7 +25,10 @@ export function BarMitzvahPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="#packages"
-              className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105"
+              style={{
+                background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+              }}
+              className="px-8 py-3 text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105"
             >
               לראות את חבילות בר המצווה
             </a>
@@ -32,7 +36,11 @@ export function BarMitzvahPage() {
               href={whatsappLink('שלום, אני רוצה לשמוע על חבילות לבר מצווה')}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 bg-white text-purple-600 rounded-full border-2 border-purple-600 hover:bg-purple-50 transition-all"
+              style={{
+                color: inlineColors.primary.deep,
+                borderColor: inlineColors.primary.deep
+              }}
+              className="px-8 py-3 bg-white rounded-full border-2 hover:bg-gray-50 transition-all"
             >
               דברו איתנו בוואטסאפ
             </a>
@@ -56,7 +64,7 @@ export function BarMitzvahPage() {
       </section>
 
       {/* Main Packages Section */}
-      <section id="packages" className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section id="packages" className={`py-16 ${colors.gradients.bgSoft}`}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +73,12 @@ export function BarMitzvahPage() {
             className="text-center mb-12"
           >
             <h2 className="text-slate-800 mb-4">
-              <span className="inline-block transform -rotate-2 bg-purple-600 text-white px-3 py-1 rounded ml-2">שלוש</span>
+              <span 
+                style={{ backgroundColor: inlineColors.primary.deep }}
+                className="inline-block transform -rotate-2 text-white px-3 py-1 rounded ml-2"
+              >
+                שלוש
+              </span>
               חבילות לבר מצווה
             </h2>
             <p className="text-slate-600">מעיצוב מרשים ועד צילום מושלם - הכל במקום אחד</p>
@@ -80,13 +93,16 @@ export function BarMitzvahPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div className="inline-block bg-blue-500 text-white px-4 py-1 rounded-full text-sm mb-4">
+              <div 
+                style={{ backgroundColor: inlineColors.primary.medium }}
+                className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
+              >
                 חבילת בסיס
               </div>
               <h3 className="text-slate-800 mb-2">חבילת צילום לבר מצווה</h3>
               <p className="text-slate-600 mb-6">צילום מקצועי ומגנטים לאורחים</p>
               <div className="mb-6">
-                <span className="text-purple-600 text-4xl">₪2000</span>
+                <span style={{ color: inlineColors.primary.deep }} className="text-4xl">₪2000</span>
               </div>
               <ul className="space-y-3 mb-8 text-right">
                 {[
@@ -99,7 +115,7 @@ export function BarMitzvahPage() {
                   'קישור לגלריית תמונות',
                 ].map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 style={{ color: inlineColors.primary.deep }} className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{feature}</span>
                   </li>
                 ))}
@@ -108,7 +124,8 @@ export function BarMitzvahPage() {
                 href={whatsappLink('שלום, אשמח להזמין חבילת צילום לבר מצווה.\nחבילה: חבילת צילום – 2000₪\nמקום האירוע: [מקום]\nתאריך: [תאריך]')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+                style={{ backgroundColor: inlineColors.primary.deep }}
+                className="block w-full text-center px-6 py-3 text-white rounded-full hover:opacity-90 transition-all"
               >
                 לפרטים והזמנה
               </a>
@@ -120,7 +137,10 @@ export function BarMitzvahPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-2xl shadow-2xl transform scale-105 p-8 relative"
+              style={{
+                background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+              }}
+              className="text-white rounded-2xl shadow-2xl transform scale-105 p-8 relative"
             >
               <div className="absolute top-0 right-0 bg-yellow-400 text-slate-800 px-4 py-1 rounded-bl-2xl rounded-tr-2xl text-sm">
                 הכי משתלם
@@ -157,7 +177,8 @@ export function BarMitzvahPage() {
                 href={whatsappLink('שלום, אשמח להזמין חבילה משולבת לבר מצווה.\nחבילה: חבילה משולבת פרימיום – 3500₪\nמקום האירוע: [מקום]\nתאריך: [תאריך]')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-white text-purple-600 rounded-full hover:bg-purple-50 transition-colors"
+                style={{ color: inlineColors.primary.deep }}
+                className="block w-full text-center px-6 py-3 bg-white rounded-full hover:bg-gray-50 transition-colors"
               >
                 לפרטים והזמנה
               </a>
@@ -193,7 +214,7 @@ export function BarMitzvahPage() {
                   'אלבום מודפס פרימיום',
                 ].map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 style={{ color: inlineColors.primary.deep }} className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{feature}</span>
                   </li>
                 ))}
@@ -202,7 +223,10 @@ export function BarMitzvahPage() {
                 href={whatsappLink('שלום, אני מעוניין בחבילת VIP מלאה לבר מצווה')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:shadow-lg transition-all"
+                style={{
+                  background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+                }}
+                className="block w-full text-center px-6 py-3 text-white rounded-full hover:shadow-lg transition-all"
               >
                 לפרטים והזמנה
               </a>
@@ -249,7 +273,12 @@ export function BarMitzvahPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-400 relative overflow-hidden">
+      <section 
+        style={{
+          background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.light}, ${inlineColors.primary.medium})`
+        }}
+        className="py-20 relative overflow-hidden"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -265,7 +294,8 @@ export function BarMitzvahPage() {
             href={whatsappLink('שלום, אני רוצה לשמוע על חבילות לבר מצווה')}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-white text-purple-600 rounded-full hover:shadow-2xl transition-all transform hover:scale-105"
+            style={{ color: inlineColors.primary.deep }}
+            className="inline-block px-10 py-4 bg-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105"
           >
             דברו איתנו על חבילת בר מצווה
           </a>

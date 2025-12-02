@@ -1,63 +1,63 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Argaman Brand Colors - Deep Wine/Burgundy Theme */
-  --argaman-primary: #6b1a3d;        /* Deep wine/burgundy */
-  --argaman-secondary: #4d184d;      /* Dark purple */
-  --argaman-tertiary: #8b2e3f;       /* Wine red */
-  --argaman-accent: #c9a9b8;         /* Muted mauve */
+  /* Argaman Brand Colors - Updated Color Scheme */
+  --argaman-primary: #5d1f6a;        /* Deep purple */
+  --argaman-secondary: #9d7b8f;      /* Mauve */
+  --argaman-tertiary: #d4a5b3;       /* Rose */
+  --argaman-accent: #f5e5eb;         /* Blush */
   --argaman-white: #ffffff;
   --argaman-dark: #292929;
   --argaman-muted: #777777;
   
   /* Argaman UI Colors */
-  --argaman-border: #d4c4cc;
-  --argaman-background: #f9f5f7;
-  --argaman-footer-bg: #f0e8ed;
+  --argaman-border: #d4a5b3;
+  --argaman-background: #fdfbfc;
+  --argaman-footer-bg: #f5e5eb;
   
   /* Argaman Accessibility Colors */
-  --argaman-a11y-panel: #3a123a;
-  --argaman-a11y-accent: #c9a9b8;
-  --argaman-a11y-muted: #a68899;
+  --argaman-a11y-panel: #5d1f6a;
+  --argaman-a11y-accent: #d4a5b3;
+  --argaman-a11y-muted: #9d7b8f;
   
   --font-size: 16px;
-  --background: #f9f5f7;
+  --background: #fdfbfc;
   --foreground: #292929;
   --card: #ffffff;
   --card-foreground: #292929;
   --popover: #ffffff;
   --popover-foreground: #292929;
-  --primary: #6b1a3d;
+  --primary: #5d1f6a;
   --primary-foreground: #ffffff;
-  --secondary: #4d184d;
+  --secondary: #9d7b8f;
   --secondary-foreground: #ffffff;
   --muted: #777777;
   --muted-foreground: #777777;
-  --accent: #c9a9b8;
-  --accent-foreground: #4d184d;
+  --accent: #d4a5b3;
+  --accent-foreground: #5d1f6a;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: #d4c4cc;
+  --border: #d4a5b3;
   --input: transparent;
-  --input-background: #f3f3f5;
+  --input-background: #f5e5eb;
   --switch-background: #cbced4;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #6b1a3d;
+  --ring: #5d1f6a;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: #faf8fb;
+  --sidebar: #fdfbfc;
   --sidebar-foreground: #292929;
-  --sidebar-primary: #4d184d;
+  --sidebar-primary: #5d1f6a;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #d8c7dc;
-  --sidebar-accent-foreground: #4d184d;
+  --sidebar-accent: #f5e5eb;
+  --sidebar-accent-foreground: #5d1f6a;
   --sidebar-border: #e0e0e0;
-  --sidebar-ring: #4d184d;
+  --sidebar-ring: #5d1f6a;
 }
 
 .dark {

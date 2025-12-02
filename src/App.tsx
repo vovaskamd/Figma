@@ -12,6 +12,7 @@ import { ExperimentPage } from './pages/ExperimentPage';
 import { PhotozoneBuilderPage } from './pages/PhotozoneBuilderPage';
 import { Experiments2Page } from './pages/Experiments2Page';
 import { CameraShutterLoader } from './components/CameraShutterLoader';
+import { inlineColors, animationColors } from './styles/design-system';
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -91,7 +92,12 @@ export default function App() {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="fixed inset-0 z-50"
           >
-            <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-[#6b1a3d] via-[#4d184d] to-[#8b2e3f]">
+            <div 
+              className="relative w-full h-full overflow-hidden"
+              style={{
+                background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
+              }}
+            >
               {/* Animated balloons background */}
               <div className="absolute inset-0">
                 {[...Array(10)].map((_, i) => (
@@ -117,16 +123,16 @@ export default function App() {
                       className="w-16 h-20 rounded-full shadow-lg"
                       style={{
                         background: [
-                          'linear-gradient(to bottom, #6b1a3d, #8b2e3f)',
-                          'linear-gradient(to bottom, #4d184d, #6b1a3d)',
-                          'linear-gradient(to bottom, #8b2e3f, #a02040)',
-                          'linear-gradient(to bottom, #722f37, #8b2e3f)',
-                          'linear-gradient(to bottom, #5a1a3a, #6b1a3d)',
-                          'linear-gradient(to bottom, #4d184d, #722f37)',
-                          'linear-gradient(to bottom, #8b2e3f, #6b1a3d)',
-                          'linear-gradient(to bottom, #6b1a3d, #4d184d)',
-                          'linear-gradient(to bottom, #722f37, #5a1a3a)',
-                          'linear-gradient(to bottom, #4d184d, #8b2e3f)',
+                          `linear-gradient(to bottom, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.light}, ${inlineColors.primary.blush})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.medium}, ${inlineColors.primary.blush})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.deep}, ${inlineColors.primary.blush})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.light}, ${inlineColors.primary.medium})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.blush}, ${inlineColors.primary.light})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`,
+                          `linear-gradient(to bottom, ${inlineColors.primary.medium}, ${inlineColors.primary.deep})`,
                         ][i % 10],
                       }}
                     >
@@ -150,7 +156,7 @@ export default function App() {
                     style={{
                       left: `${Math.random() * 100}%`,
                       top: '-5%',
-                      background: ['#6b1a3d', '#4d184d', '#8b2e3f', '#722f37', '#a02040'][i % 5],
+                      background: animationColors[i % 5],
                       borderRadius: Math.random() > 0.5 ? '50%' : '0',
                     }}
                     animate={{
@@ -189,13 +195,13 @@ export default function App() {
                       className="absolute inset-0 rounded-full bg-white/40 blur-xl"
                     />
                     <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-full border-4 border-white shadow-2xl">
-                      <Camera className="w-16 h-16 text-[#6b1a3d]" />
+                      <Camera className="w-16 h-16" style={{ color: inlineColors.primary.deep }} />
                       <motion.div
                         className="absolute -top-2 -right-2"
                         animate={{ rotate: [0, 20, 0], scale: [1, 1.2, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                       >
-                        <Baby className="w-8 h-8 text-[#8b2e3f]" />
+                        <Baby className="w-8 h-8" style={{ color: inlineColors.primary.light }} />
                       </motion.div>
                     </div>
                   </div>
@@ -238,7 +244,10 @@ export default function App() {
                   <div className="bg-white/30 backdrop-blur-md rounded-full p-1 shadow-lg">
                     <div className="h-3 bg-white/40 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-[#8b2e3f] via-[#6b1a3d] to-[#4d184d] relative"
+                        className="h-full relative"
+                        style={{ 
+                          background: `linear-gradient(to right, ${inlineColors.primary.light}, ${inlineColors.primary.medium}, ${inlineColors.primary.deep})`
+                        }}
                         initial={{ width: '0%' }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.3 }}
