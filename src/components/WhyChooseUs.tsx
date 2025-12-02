@@ -7,30 +7,30 @@ export function WhyChooseUs() {
       icon: Palette,
       title: 'עיצוב בהתאמה אישית',
       description: 'כל קיר צילום שלנו מותאם אישי לפי הסגנון, הצבעים והנושא של האירוע שלכם.',
-      color: 'from-[#6b1a3d] to-[#8b2e3f]',
+      color: 'from-[#5d1f6a] to-[#d4a5b3]',
       delay: 0.1
     },
     {
       icon: MapPin,
       title: 'הגעה לכל אזור המרכז',
       description: 'אנחנו מגיעים עד אליכם – עובדים בכל הארץ.',
-      color: 'from-[#8b2e3f] to-[#4d184d]',
+      color: 'from-[#d4a5b3] to-[#9d7b8f]',
       delay: 0.2
     },
     {
       icon: Zap,
       title: 'שירות מהיר ואדיב',
       description: 'זמינות גבוהה, יחס אישי ותיאום פשוט דרך WhatsApp.',
-      color: 'from-[#4d184d] to-[#6b1a3d]',
+      color: 'from-[#9d7b8f] to-[#5d1f6a]',
       delay: 0.3
     }
   ];
 
   return (
-    <div className="py-20 bg-gradient-to-br from-[#faf8fb] via-white to-[#f9f5f7] relative overflow-hidden">
+    <div className="py-20 bg-gradient-to-br from-[#fdfbfc] via-white to-[#f5e5eb] relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#6b1a3d]/5 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#c9a9b8]/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#5d1f6a]/5 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#f5e5eb]/10 to-transparent rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
@@ -48,7 +48,7 @@ export function WhyChooseUs() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="inline-block"
           >
-            <h2 className="mb-4 relative text-4xl md:text-5xl bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+            <h2 className="relative text-4xl md:text-5xl bg-gradient-to-r from-[#5d1f6a] to-[#d4a5b3] bg-clip-text text-transparent pt-[0px] pr-[-226px] pb-[0px] pl-[0px]">
               למה לבחור בנו?
             </h2>
           </motion.div>
@@ -64,7 +64,7 @@ export function WhyChooseUs() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto bg-[rgba(92,134,143,0)]">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -89,7 +89,7 @@ export function WhyChooseUs() {
 
               {/* Icon Container */}
               <motion.div
-                className="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#6b1a3d]/10 to-[#8b2e3f]/10 rounded-full mb-6 mx-auto"
+                className="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#5d1f6a]/10 to-[#d4a5b3]/10 rounded-full mb-6 mx-auto"
                 whileHover={{ 
                   rotate: [0, -10, 10, -10, 0],
                   scale: 1.1
@@ -117,13 +117,13 @@ export function WhyChooseUs() {
                   whileHover={{ scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 >
-                  <feature.icon className="w-10 h-10 text-[#6b1a3d] relative z-10" />
+                  <feature.icon className="w-10 h-10 text-[#5d1f6a] relative z-10" />
                 </motion.div>
               </motion.div>
 
               {/* Title */}
               <motion.h3 
-                className="text-[#6b1a3d] mb-3 relative"
+                className="text-[#5d1f6a] mb-3 relative"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -164,7 +164,7 @@ export function WhyChooseUs() {
           className="text-center mt-16"
         >
           <motion.div
-            className="inline-flex items-center gap-2 text-slate-600 hover:text-[#6b1a3d] transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-[#5d1f6a] transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
             <span className="text-lg">רוצים לשמוע עוד?</span>
@@ -172,7 +172,7 @@ export function WhyChooseUs() {
               href="https://api.whatsapp.com/send?phone=972542330001&text=שלום, אשמח לשמוע פרטים נוספים"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#6b1a3d] underline decoration-[#c9a9b8] underline-offset-4 hover:decoration-[#6b1a3d]"
+              className="inline-flex items-center gap-2 text-[#5d1f6a] underline decoration-[#d4a5b3] underline-offset-4 hover:decoration-[#5d1f6a]"
               whileHover={{ x: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from 'lucide-react';
+import { inlineColors } from '../styles/design-system';
 
 export function ContactPage() {
   const whatsappLink = 'https://api.whatsapp.com/send?phone=972542330001&text=שלום, אני רוצה לשמוע עוד פרטים';
@@ -10,40 +11,45 @@ export function ContactPage() {
       title: 'טלפון',
       details: '054-233-0001',
       action: 'tel:0542330001',
-      color: 'from-green-500 to-emerald-500',
+      gradient: `linear-gradient(to bottom right, #10b981, #059669)`,
     },
     {
       icon: MessageCircle,
       title: 'וואטסאפ',
       details: '054-233-0001',
       action: whatsappLink,
-      color: 'from-green-500 to-teal-500',
+      gradient: `linear-gradient(to bottom right, #10b981, #0d9488)`,
     },
     {
       icon: Mail,
       title: 'אימייל',
       details: 'info@argaman.co.il',
       action: 'mailto:info@argaman.co.il',
-      color: 'from-blue-500 to-indigo-500',
+      gradient: `linear-gradient(to bottom right, #3b82f6, #6366f1)`,
     },
     {
       icon: MapPin,
       title: 'מיקום',
       details: 'מרכז הארץ',
-      color: 'from-purple-500 to-pink-500',
+      gradient: `linear-gradient(to bottom right, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`,
     },
     {
       icon: Clock,
       title: 'שעות פעילות',
       details: 'א׳-ה׳: 9:00-18:00\nשישי: 9:00-14:00',
-      color: 'from-orange-500 to-red-500',
+      gradient: `linear-gradient(to bottom right, #f97316, #dc2626)`,
     },
   ];
 
   return (
     <div className="min-h-screen bg-[#faf8fb]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 via-pink-500 to-purple-400 py-20">
+      <section 
+        style={{
+          background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.light}, ${inlineColors.primary.medium})`
+        }}
+        className="py-20"
+      >
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -80,18 +86,24 @@ export function ContactPage() {
                     rel={info.action.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="block bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2"
                   >
-                    <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${info.color} rounded-full mb-4`}>
+                    <div 
+                      style={{ background: info.gradient }}
+                      className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
+                    >
                       <info.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-slate-800 mb-2 text-xl">{info.title}</h3>
                     <p className="text-slate-600 whitespace-pre-line">{info.details}</p>
-                    <span className="text-purple-600 font-semibold mt-4 inline-block group-hover:underline">
+                    <span style={{ color: inlineColors.primary.deep }} className="font-semibold mt-4 inline-block group-hover:underline">
                       לחץ ליצירת קשר ←
                     </span>
                   </a>
                 ) : (
                   <div className="bg-white rounded-2xl p-8 shadow-lg">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${info.color} rounded-full mb-4`}>
+                    <div 
+                      style={{ background: info.gradient }}
+                      className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
+                    >
                       <info.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-slate-800 mb-2 text-xl">{info.title}</h3>
@@ -111,7 +123,7 @@ export function ContactPage() {
           >
             <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
               <div className="text-center mb-8">
-                <Send className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <Send style={{ color: inlineColors.primary.deep }} className="w-12 h-12 mx-auto mb-4" />
                 <h2 className="text-slate-800 mb-2">שלחו לנו הודעה</h2>
                 <p className="text-slate-600">מלאו את הפרטים ונחזור אליכם בהקדם</p>
               </div>
@@ -122,18 +134,40 @@ export function ContactPage() {
                     <label className="block text-slate-700 mb-2 text-right">שם מלא *</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      style={{
+                        borderColor: '#cbd5e1'
+                      }}
+                      className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent"
                       placeholder="הכניסו את שמכם"
                       dir="rtl"
+                      onFocus={(e) => {
+                        e.target.style.borderColor = 'transparent';
+                        e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = '#cbd5e1';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     />
                   </div>
                   <div>
                     <label className="block text-slate-700 mb-2 text-right">טלפון *</label>
                     <input
                       type="tel"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      style={{
+                        borderColor: '#cbd5e1'
+                      }}
+                      className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent"
                       placeholder="מספר טלפון"
                       dir="rtl"
+                      onFocus={(e) => {
+                        e.target.style.borderColor = 'transparent';
+                        e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = '#cbd5e1';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     />
                   </div>
                 </div>
@@ -142,15 +176,40 @@ export function ContactPage() {
                   <label className="block text-slate-700 mb-2 text-right">אימייל</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    style={{
+                      borderColor: '#cbd5e1'
+                    }}
+                    className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent"
                     placeholder="כתובת אימייל"
                     dir="rtl"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = 'transparent';
+                      e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#cbd5e1';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   />
                 </div>
 
                 <div>
                   <label className="block text-slate-700 mb-2 text-right">סוג אירוע *</label>
-                  <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" dir="rtl">
+                  <select 
+                    style={{
+                      borderColor: '#cbd5e1'
+                    }}
+                    className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent" 
+                    dir="rtl"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = 'transparent';
+                      e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#cbd5e1';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  >
                     <option value="">בחרו סוג אירוע</option>
                     <option value="brit">ברית מילה</option>
                     <option value="bar-mitzvah">בר/בת מצווה</option>
@@ -166,16 +225,38 @@ export function ContactPage() {
                     <label className="block text-slate-700 mb-2 text-right">תאריך האירוע</label>
                     <input
                       type="date"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      style={{
+                        borderColor: '#cbd5e1'
+                      }}
+                      className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent"
+                      onFocus={(e) => {
+                        e.target.style.borderColor = 'transparent';
+                        e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = '#cbd5e1';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     />
                   </div>
                   <div>
                     <label className="block text-slate-700 mb-2 text-right">מיקום האירוע</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      style={{
+                        borderColor: '#cbd5e1'
+                      }}
+                      className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent"
                       placeholder="עיר/אולם"
                       dir="rtl"
+                      onFocus={(e) => {
+                        e.target.style.borderColor = 'transparent';
+                        e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = '#cbd5e1';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     />
                   </div>
                 </div>
@@ -184,16 +265,30 @@ export function ContactPage() {
                   <label className="block text-slate-700 mb-2 text-right">הודעה</label>
                   <textarea
                     rows={5}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    style={{
+                      borderColor: '#cbd5e1'
+                    }}
+                    className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent resize-none"
                     placeholder="ספרו לנו על האירוע ומה אתם מחפשים..."
                     dir="rtl"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = 'transparent';
+                      e.target.style.boxShadow = `0 0 0 2px ${inlineColors.primary.deep}`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#cbd5e1';
+                      e.target.style.boxShadow = 'none';
+                    }}
                   />
                 </div>
 
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold inline-flex items-center gap-2"
+                    style={{
+                      background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+                    }}
+                    className="px-10 py-4 text-white rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold inline-flex items-center gap-2"
                   >
                     <Send className="w-5 h-5" />
                     שלח הודעה
@@ -204,7 +299,8 @@ export function ContactPage() {
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-purple-600 hover:underline mr-1"
+                      style={{ color: inlineColors.primary.deep }}
+                      className="hover:underline mr-1"
                     >
                       וואטסאפ
                     </a>
@@ -233,9 +329,12 @@ export function ContactPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-16 text-center"
+            style={{
+              background: `linear-gradient(to bottom right, ${inlineColors.primary.paleBlush}, ${inlineColors.primary.blush})`
+            }}
+            className="rounded-2xl p-16 text-center"
           >
-            <MapPin className="w-20 h-20 text-purple-600 mx-auto mb-6" />
+            <MapPin style={{ color: inlineColors.primary.deep }} className="w-20 h-20 mx-auto mb-6" />
             <h3 className="text-slate-800 mb-4 text-2xl">מרכז הארץ</h3>
             <p className="text-slate-600 max-w-2xl mx-auto mb-6">
               אנחנו מגיעים לכל אזור מרכז הארץ - תל אביב, גוש דן, השרון והסביבה.
@@ -245,7 +344,10 @@ export function ContactPage() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full hover:shadow-lg transition-all"
+              style={{
+                background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+              }}
+              className="inline-block px-8 py-3 text-white rounded-full hover:shadow-lg transition-all"
             >
               בדקו זמינות באזור שלכם
             </a>

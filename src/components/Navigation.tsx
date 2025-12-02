@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Camera, Baby, Star, Gift, Phone, Sparkles, Menu, X, MessageCircle, Palette, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { colors, animationColors, inlineColors } from '../styles/design-system';
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,7 +41,10 @@ export function Navigation() {
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <motion.div
-              className="bg-gradient-to-br from-[#6b1a3d] to-[#4d184d] p-3 rounded-full"
+              style={{
+                background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
+              }}
+              className="p-3 rounded-full"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -60,9 +64,25 @@ export function Navigation() {
                   <button
                     onClick={() => handleNavClick(item.id)}
                     className={`transition-colors px-3 py-2 rounded-lg ${currentPage === item.id
-                        ? 'text-purple-600 bg-purple-50 font-semibold'
-                        : 'text-slate-700 hover:text-purple-600 hover:bg-purple-50'
+                        ? `font-semibold`
+                        : 'text-slate-700'
                       }`}
+                    style={{
+                      color: currentPage === item.id ? inlineColors.primary.deep : undefined,
+                      backgroundColor: currentPage === item.id ? `${inlineColors.primary.blush}40` : 'transparent'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (currentPage !== item.id) {
+                        e.currentTarget.style.color = inlineColors.primary.deep;
+                        e.currentTarget.style.backgroundColor = `${inlineColors.primary.blush}40`;
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (currentPage !== item.id) {
+                        e.currentTarget.style.color = '#334155';
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                      }
+                    }}
                   >
                     {item.label}
                   </button>
@@ -76,7 +96,10 @@ export function Navigation() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-[#6b1a3d] to-[#4d184d] text-white rounded-full hover:shadow-lg transition-shadow"
+            style={{
+              background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
+            }}
+            className="hidden lg:flex items-center gap-2 px-6 py-2 text-white rounded-full hover:shadow-lg transition-shadow"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -87,7 +110,20 @@ export function Navigation() {
           {/* Mobile Menu Button - Left Side (RTL) */}
           <motion.button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 hover:bg-purple-50 rounded-lg transition-colors relative"
+            className="lg:hidden p-2 rounded-lg transition-colors relative"
+            style={{
+              backgroundColor: mobileMenuOpen ? `${inlineColors.primary.blush}40` : 'transparent'
+            }}
+            onMouseEnter={(e) => {
+              if (!mobileMenuOpen) {
+                e.currentTarget.style.backgroundColor = `${inlineColors.primary.blush}40`;
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!mobileMenuOpen) {
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }
+            }}
             aria-label="תפריט"
             whileTap={{ scale: 0.95 }}
           >
@@ -100,7 +136,7 @@ export function Navigation() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <X className="w-6 h-6 text-purple-600" />
+                  <X style={{ color: inlineColors.primary.deep }} className="w-6 h-6" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -110,7 +146,7 @@ export function Navigation() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className="w-6 h-6 text-purple-600" />
+                  <Menu style={{ color: inlineColors.primary.deep }} className="w-6 h-6" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -152,7 +188,7 @@ export function Navigation() {
                     <div
                       className="w-6 h-8 rounded-full"
                       style={{
-                        background: ['#6b1a3d', '#4d184d', '#8b2e3f', '#722f37', '#5a1a3a'][i % 5],
+                        background: [inlineColors.primary.deep, inlineColors.primary.medium, inlineColors.primary.light, inlineColors.primary.blush, inlineColors.primary.deep][i % 5],
                         boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                       }}
                     />
@@ -182,7 +218,7 @@ export function Navigation() {
                       ease: 'easeInOut',
                     }}
                   >
-                    <Sparkles className="w-4 h-4 text-[#8b2e3f]" />
+                    <Sparkles style={{ color: inlineColors.primary.light }} className="w-4 h-4" />
                   </motion.div>
                 ))}
               </div>
@@ -208,9 +244,25 @@ export function Navigation() {
                       <motion.button
                         onClick={() => handleNavClick(item.id)}
                         className={`w-full text-right transition-colors px-4 py-3 rounded-lg ${currentPage === item.id
-                            ? 'text-purple-600 bg-purple-50 font-semibold'
-                            : 'text-slate-700 hover:text-purple-600 hover:bg-purple-50'
+                            ? 'font-semibold'
+                            : 'text-slate-700'
                           }`}
+                        style={{
+                          color: currentPage === item.id ? inlineColors.primary.deep : undefined,
+                          backgroundColor: currentPage === item.id ? `${inlineColors.primary.blush}40` : 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (currentPage !== item.id) {
+                            e.currentTarget.style.color = inlineColors.primary.deep;
+                            e.currentTarget.style.backgroundColor = `${inlineColors.primary.blush}40`;
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (currentPage !== item.id) {
+                            e.currentTarget.style.color = '#334155';
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                          }
+                        }}
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -246,7 +298,10 @@ export function Navigation() {
                     {/* Call Button - Argaman colors */}
                     <motion.a
                       href={phoneNumber}
-                      className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-[#6b1a3d] to-[#4d184d] text-white rounded-full hover:shadow-lg transition-shadow"
+                      style={{
+                        background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
+                      }}
+                      className="flex items-center justify-center gap-2 w-full px-6 py-3 text-white rounded-full hover:shadow-lg transition-shadow"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >

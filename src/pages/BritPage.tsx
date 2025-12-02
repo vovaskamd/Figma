@@ -8,6 +8,7 @@ import { SectionHeader } from '../components/ui/SectionHeader';
 import { Button } from '../components/ui/Button';
 import { InfiniteCarousel } from '../components/InfiniteCarousel';
 import { useState } from 'react';
+import { colors, inlineColors } from '../styles/design-system';
 
 export function BritPage() {
   const whatsappLink = (text: string) =>
@@ -47,7 +48,7 @@ export function BritPage() {
           className="text-center max-w-4xl mx-auto"
         >
           <motion.h1 
-            className="text-5xl md:text-7xl mb-6 bg-gradient-to-r from-[#6b1a3d] via-[#8b2e3f] to-[#4d184d] bg-clip-text text-transparent"
+            className={`text-5xl md:text-7xl mb-6 ${colors.gradients.textSecondary}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -146,7 +147,10 @@ export function BritPage() {
 
               <a
                 href="tel:+972542330001"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#6b1a3d] to-[#8b2e3f] text-white rounded-full hover:shadow-xl transition-all transform hover:scale-105"
+                style={{
+                  background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
+                }}
+                className="group relative inline-flex items-center gap-3 px-8 py-4 text-white rounded-full hover:shadow-xl transition-all transform hover:scale-105"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -170,9 +174,14 @@ export function BritPage() {
       {/* Intro Text */}
       <section className="relative py-20 overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#faf8fb] via-white to-[#f9f5f7]">
+        <div style={{
+          background: `linear-gradient(to bottom right, ${inlineColors.primary.paleBlush}, white, ${inlineColors.primary.blush})`
+        }} className="absolute inset-0">
           <motion.div
-            className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#6b1a3d]/10 to-transparent rounded-full blur-3xl"
+            style={{
+              background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}1A, transparent)`
+            }}
+            className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
             animate={{
               x: [0, 100, 0],
               y: [0, 50, 0],
@@ -185,7 +194,10 @@ export function BritPage() {
             }}
           />
           <motion.div
-            className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#c9a9b8]/15 to-transparent rounded-full blur-3xl"
+            style={{
+              background: `linear-gradient(to top left, ${inlineColors.primary.light}26, transparent)`
+            }}
+            className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
             animate={{
               x: [0, -100, 0],
               y: [0, -50, 0],
@@ -198,7 +210,10 @@ export function BritPage() {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-[#8b2e3f]/8 to-[#4d184d]/8 rounded-full blur-2xl"
+            style={{
+              background: `linear-gradient(to right, ${inlineColors.primary.medium}14, ${inlineColors.primary.deep}14)`
+            }}
+            className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full blur-2xl"
             animate={{
               rotate: [0, 360],
               scale: [1, 1.5, 1],
@@ -220,7 +235,7 @@ export function BritPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <motion.h2
-              className="text-4xl md:text-5xl mb-6 bg-gradient-to-r from-[#6b1a3d] via-[#8b2e3f] to-[#4d184d] bg-clip-text text-transparent"
+              className={`text-4xl md:text-5xl mb-6 ${colors.gradients.textSecondary}`}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -247,16 +262,16 @@ export function BritPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <div className="w-2 h-2 rounded-full bg-[#6b1a3d]" />
-              <div className="w-2 h-2 rounded-full bg-[#8b2e3f]" />
-              <div className="w-2 h-2 rounded-full bg-[#4d184d]" />
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: inlineColors.primary.deep }} />
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: inlineColors.primary.medium }} />
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: inlineColors.primary.light }} />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Main Packages Section */}
-      <section id="packages" className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section id="packages" className={`py-16 ${colors.gradients.bgSoft}`}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -265,7 +280,7 @@ export function BritPage() {
             className="text-center mb-12"
           >
             <h2 className="text-slate-800 mb-4">
-              <span className="inline-block transform -rotate-2 bg-purple-600 text-white px-3 py-1 rounded ml-2">שלוש</span>
+              <span style={{ backgroundColor: inlineColors.primary.deep }} className="inline-block transform -rotate-2 text-white px-3 py-1 rounded ml-2">שלוש</span>
               חבילות לברית
             </h2>
             <p className="text-slate-600">קירות צילום ושילובי בלונים שיתאימו גם לברית באולם וגם בבית</p>
@@ -280,13 +295,16 @@ export function BritPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div className="inline-block bg-purple-500 text-white px-4 py-1 rounded-full text-sm mb-4">
+              <div 
+                style={{ backgroundColor: inlineColors.primary.deep }}
+                className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
+              >
                 צילום לברית
               </div>
               <h3 className="text-slate-800 mb-2">חבילת צילום לברית הפופולרית</h3>
               <p className="text-slate-600 mb-6">סטילס, וידאו, מגנטים</p>
               <div className="mb-6">
-                <span className="text-purple-600 text-4xl">₪1500</span>
+                <span style={{ color: inlineColors.primary.deep }} className="text-4xl">₪1500</span>
               </div>
               <ul className="space-y-3 mb-8 text-right">
                 {[
@@ -299,7 +317,7 @@ export function BritPage() {
                   'קישור לגלריית תמונות',
                 ].map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 style={{ color: inlineColors.primary.deep }} className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{feature}</span>
                   </li>
                 ))}
@@ -308,7 +326,8 @@ export function BritPage() {
                 href={whatsappLink('שלום, אשמח להזמין חבילת צילום לברית מילה.\nחבילה: חבילת צילום לברית הפופולרית – 1500₪\nמקום האירוע: [מקום]\nתאריך: [תאריך]')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+                style={{ backgroundColor: inlineColors.primary.deep }}
+                className="block w-full text-center px-6 py-3 text-white rounded-full hover:opacity-90 transition-all"
               >
                 לפרטים והזמנה
               </a>
@@ -320,7 +339,10 @@ export function BritPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-2xl shadow-2xl transform scale-105 p-8 relative"
+              style={{
+                background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+              }}
+              className="text-white rounded-2xl shadow-2xl transform scale-105 p-8 relative"
             >
               <div className="absolute top-0 right-0 bg-yellow-400 text-slate-800 px-4 py-1 rounded-bl-2xl rounded-tr-2xl text-sm">
                 הכי משתלם
@@ -356,7 +378,8 @@ export function BritPage() {
                 href={whatsappLink('שלום, אשמח להזמין חבילה צילום ועיצוב בלונים לברית מילה.\nחבילה: חבילה לברית המשולבת – 2500₪\nמקום האירוע: [מקום]\nתאריך: [תאריך]')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-white text-purple-600 rounded-full hover:bg-purple-50 transition-colors"
+                style={{ color: inlineColors.primary.deep }}
+                className="block w-full text-center px-6 py-3 bg-white rounded-full hover:bg-gray-50 transition-colors"
               >
                 לפרטים והזמנה
               </a>
@@ -370,7 +393,10 @@ export function BritPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div className="inline-block bg-purple-500 text-white px-4 py-1 rounded-full text-sm mb-4">
+              <div 
+                style={{ backgroundColor: inlineColors.primary.deep }}
+                className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
+              >
                 לאולם גדול
               </div>
               <h3 className="text-slate-800 mb-2">קיר בלונים גדול לברית</h3>
@@ -387,7 +413,7 @@ export function BritPage() {
                   'אופציה לקישוטי מרכזי שולחן',
                 ].map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 style={{ color: inlineColors.primary.deep }} className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{feature}</span>
                   </li>
                 ))}
@@ -396,7 +422,8 @@ export function BritPage() {
                 href={whatsappLink('שלום, אני מעוניין בחבילת בלונים גדולה לברית')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+                style={{ backgroundColor: inlineColors.primary.deep }}
+                className="block w-full text-center px-6 py-3 text-white rounded-full hover:opacity-90 transition-all"
               >
                 לפרטים והזמנה
               </a>
@@ -429,7 +456,10 @@ export function BritPage() {
             >
               <button
                 onClick={() => setShowAllImages(true)}
-                className="px-8 py-3 bg-gradient-to-r from-[#6b1a3d] to-[#4d184d] text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105"
+                style={{
+                  background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
+                }}
+                className="px-8 py-3 text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105"
               >
                 הצג עוד תמונות ({britImages.length - 10} נוספות)
               </button>

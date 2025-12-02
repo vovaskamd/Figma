@@ -18,10 +18,10 @@ export function Section({
   padding = 'default'
 }: SectionProps) {
   const backgrounds = {
-    light: 'bg-[#faf8fb]',
+    light: 'bg-[#fdfbfc]',
     white: 'bg-white',
-    gradient: 'bg-gradient-to-br from-[#faf8fb] via-white to-[#f9f5f7]',
-    purplePink: 'bg-gradient-to-br from-purple-50 to-pink-50',
+    gradient: 'bg-gradient-to-br from-[#fdfbfc] via-white to-[#f5e5eb]',
+    purplePink: 'bg-gradient-to-br from-[#f5e5eb] to-[#fdfbfc]',
   };
 
   const paddings = {

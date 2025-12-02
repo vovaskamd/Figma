@@ -6,7 +6,7 @@ export function CameraShutterLoader() {
   const blades = Array.from({ length: 8 }, (_, i) => i);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#6b1a3d] via-[#4d184d] to-[#8b2e3f]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#5d1f6a] via-[#9d7b8f] to-[#d4a5b3]">
       {/* Camera shutter blades */}
       <div className="relative w-64 h-64">
         {/* Shutter blade container */}
@@ -92,7 +92,7 @@ export function CameraShutterLoader() {
                 ease: 'linear',
               }}
             >
-              <Camera className="w-12 h-12 text-[#4d184d]" />
+              <Camera className="w-12 h-12 text-[#5d1f6a]" />
             </motion.div>
           </div>
         </motion.div>

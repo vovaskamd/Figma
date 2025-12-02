@@ -50,7 +50,7 @@ export function SectionHeader({
           {title}
           {gradient && (
             <motion.div
-              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-purple-600 to-transparent"
+              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#5d1f6a] to-transparent"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}

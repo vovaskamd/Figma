@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Camera, Gift, Sparkles, Star, Heart, PartyPopper } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { colors, buttonStyles, sectionStyles, inlineColors } from '../styles/design-system';
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export function HomePage() {
       icon: Camera,
       title: 'חבילות לברית',
       description: 'עיצוב בלונים מקסים וצילום מקצועי לברית מילה ובריתה',
-      image: 'https://images.unsplash.com/photo-1627779543640-7ccec5c7fa62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwYmFsbG9vbnMlMjBiYWJ5fGVufDF8fHx8MTc2NDQwMzk3M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://images.unsplash.com/photo-1627779543640-7ccec5c7fa62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwYmFsbG9vbnMlMjBiABAyfGVufDF8fHx8MTc2NDQwMzk3M3ww&ixlib=rb-4.1.0&q=80&w=1080',
       page: 'brit',
     },
     {
@@ -60,12 +61,16 @@ export function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#faf8fb]">
+    <div className="min-h-screen bg-[#fdfbfc]">
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-500 to-purple-400 opacity-90" />
-
+        <div
+          className="absolute inset-0 opacity-90"
+          style={{
+            background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
+          }}
+        />
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
@@ -101,33 +106,35 @@ export function HomePage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="mb-6 flex justify-center">
-              <div className="bg-white/20 backdrop-blur-md p-6 rounded-full">
-                <Camera className="w-20 h-20 text-white" />
-              </div>
-            </div>
-            <h1 className="text-white mb-6 text-4xl md:text-6xl">
+            <h1 className="mb-6 text-5xl md:text-7xl">
               Argaman - בלונים וצילום לאירועים
             </h1>
-            <p className="text-white/90 text-xl md:text-2xl max-w-3xl mx-auto mb-8">
-              הופכים כל אירוע לחוויה בלתי נשכחת עם עיצוב בלונים מקצועי וצילום ברמה הגבוהה ביותר
+            <p className="text-xl md:text-2xl mb-8 text-white/90">
+              עיצוב בלונים מקצועי וצילום לברית מילה, בר מצווה וכל אירוע מיוחד
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={whatsappLink('שלום, אני רוצה לשמוע על חבילות לאירועים')}
+                href={whatsappLink('היי! אני רוצה לשמוע על חבילות לאירוע שלי')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-white text-purple-600 rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold"
+                style={{
+                  backgroundColor: 'white',
+                  color: inlineColors.primary.deep
+                }}
+                className="px-8 py-4 rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold"
               >
-                דברו איתנו עכשיו
+                📞 דברו איתנו עכשיו
               </a>
               <button
                 onClick={() => onNavigate('catalog')}
-                className="px-8 py-4 bg-purple-600/20 backdrop-blur-sm border-2 border-white text-white rounded-full hover:bg-white/30 transition-all"
+                style={{
+                  backgroundColor: `${inlineColors.primary.deep}33`
+                }}
+                className="px-8 py-4 backdrop-blur-sm border-2 border-white text-white rounded-full hover:bg-white/30 transition-all"
               >
-                לקטלוג המוצרים
+                🎨 ראו את הקטלוג
               </button>
             </div>
           </motion.div>
@@ -135,58 +142,77 @@ export function HomePage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-white">
+      <section
+        className="py-20"
+        style={{
+          background: `linear-gradient(to bottom right, ${inlineColors.primary.paleBlush}, white, ${inlineColors.primary.blush}15)`
+        }}
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-slate-800 mb-4 text-3xl md:text-4xl">השירותים שלנו</h2>
-            <p className="text-slate-600 text-lg">חבילות מושלמות לכל סוג אירוע</p>
+            <h2 className="text-slate-800 mb-4">השירותים שלנו</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              מגוון חבילות מותאמות אישית לכל סוג אירוע
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <motion.div
-                key={service.page}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, idx) => (
+              <motion.button
+                key={idx}
+                onClick={() => onNavigate(service.page)}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: services.indexOf(service) * 0.1 }}
-                className="group cursor-pointer"
-                onClick={() => onNavigate(service.page)}
+                transition={{ delay: idx * 0.1, duration: 0.6 }}
+                className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden text-right"
               >
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
-                  <div className="h-64 overflow-hidden">
-                    <ImageWithFallback
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
+                <div className="relative h-48 overflow-hidden">
+                  <ImageWithFallback
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="bg-gradient-to-br from-purple-600 to-pink-500 p-3 rounded-full">
+                      <div
+                        style={{
+                          background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+                        }}
+                        className="p-3 rounded-full"
+                      >
                         <service.icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-slate-800 text-xl">{service.title}</h3>
+                      <h3 className="text-slate-800">{service.title}</h3>
                     </div>
-                    <p className="text-slate-600 mb-4">{service.description}</p>
-                    <span className="text-purple-600 font-semibold group-hover:underline">
-                      לפרטים נוספים ←
-                    </span>
                   </div>
+                  <p className="text-slate-600 mb-4">{service.description}</p>
+                  <span style={{ color: inlineColors.primary.deep }} className="font-semibold group-hover:underline">
+                    לפרטים נוספים ←
+                  </span>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section
+        className="py-20"
+        style={{
+          background: `linear-gradient(to bottom right, ${inlineColors.primary.blush}15, ${inlineColors.primary.paleBlush})`
+        }}
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -194,24 +220,30 @@ export function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-slate-800 mb-4 text-3xl md:text-4xl">למה לבחור בנו?</h2>
-            <p className="text-slate-600 text-lg">אנחנו מביאים את המקצועיות והיצירתיות שלכם מגיע</p>
+            <h2 className="text-slate-800 mb-4">למה לבחור בנו?</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              אנחנו מביאים ניסיון, מקצועיות ותשומת לב לכל פרט
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="text-center"
+                transition={{ delay: idx * 0.15, duration: 0.5 }}
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full mb-4">
+                <div
+                  style={{
+                    background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
+                  }}
+                  className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4"
+                >
                   <feature.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-slate-800 mb-2 text-xl">{feature.title}</h3>
+                <h3 className="text-slate-800 mb-2">{feature.title}</h3>
                 <p className="text-slate-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -220,57 +252,73 @@ export function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-400 relative overflow-hidden">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
+        }}
+      >
         <div className="absolute inset-0 opacity-10">
-          {[...Array(15)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-32 h-32 rounded-full bg-white"
+              className="absolute"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 2, 1],
+                opacity: [0.3, 0.7, 0.3],
               }}
               transition={{
                 duration: 3 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 2,
               }}
-            />
+            >
+              <div className="w-4 h-4 bg-white rounded-full" />
+            </motion.div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="container mx-auto px-4 text-center relative z-10"
-        >
-          <PartyPopper className="w-16 h-16 text-white mx-auto mb-6" />
-          <h2 className="text-white mb-6 text-3xl md:text-4xl">מוכנים להתחיל לתכנן את האירוע?</h2>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto mb-8">
-            צרו איתנו קשר עכשיו ונעזור לכם להפוך את האירוע שלכם לבלתי נשכח
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href={whatsappLink('שלום, אני רוצה לשמוע על חבילות לאירועים')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-4 bg-white text-purple-600 rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold"
-            >
-              שלחו הודעה בוואטסאפ
-            </a>
-            <button
-              onClick={() => onNavigate('contact')}
-              className="inline-block px-10 py-4 bg-purple-600/20 backdrop-blur-sm border-2 border-white text-white rounded-full hover:bg-white/30 transition-all"
-            >
-              צור קשר
-            </button>
-          </div>
-        </motion.div>
+        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <PartyPopper className="w-16 h-16 text-white mx-auto mb-6" />
+            <h2 className="mb-6 text-3xl md:text-4xl">מוכנים להפוך את האירוע שלכם לבלתי נשכח?</h2>
+            <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+              צרו איתנו קשר עוד היום ונתחיל לתכנן ביחד
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={whatsappLink('שלום! אני מעוניין לקבל פרטים על חבילות')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: 'white',
+                  color: inlineColors.primary.deep
+                }}
+                className="inline-block px-10 py-4 rounded-full hover:shadow-2xl transition-all transform hover:scale-105 font-semibold"
+              >
+                צרו קשר בוואטסאפ
+              </a>
+              <button
+                onClick={() => onNavigate('contact')}
+                style={{
+                  backgroundColor: `${inlineColors.primary.deep}33`
+                }}
+                className="inline-block px-10 py-4 backdrop-blur-sm border-2 border-white text-white rounded-full hover:bg-white/30 transition-all"
+              >
+                מלאו טופס צור קשר
+              </button>
+            </div>
+          </motion.div>
+        </div>
       </section>
     </div>
   );
