@@ -11,6 +11,7 @@ import { CatalogPage } from './pages/CatalogPage';
 import { ContactPage } from './pages/ContactPage';
 import { ExperimentPage } from './pages/ExperimentPage';
 import { PhotozoneBuilderPage } from './pages/PhotozoneBuilderPage';
+import { TestPage } from './pages/TestPage';
 import { Experiments2Page } from './pages/Experiments2Page';
 import { CameraShutterLoader } from './components/CameraShutterLoader';
 import { inlineColors, animationColors } from './styles/design-system';
@@ -57,7 +58,7 @@ export default function App() {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="fixed inset-0 z-50"
           >
-            <div 
+            <div
               className="relative w-full h-full overflow-hidden"
               style={{
                 background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
@@ -210,7 +211,7 @@ export default function App() {
                     <div className="h-3 bg-white/40 rounded-full overflow-hidden">
                       <motion.div
                         className="h-full relative"
-                        style={{ 
+                        style={{
                           background: `linear-gradient(to right, ${inlineColors.primary.light}, ${inlineColors.primary.medium}, ${inlineColors.primary.deep})`
                         }}
                         initial={{ width: '0%' }}

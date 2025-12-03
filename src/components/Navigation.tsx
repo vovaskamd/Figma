@@ -19,6 +19,7 @@ export function Navigation() {
     { id: 'contact', label: 'צור קשר', icon: Phone },
     { id: 'experiment', label: '🧪 ניסויים', icon: Sparkles },
     { id: 'experiments2', label: '🧪 ניסויים 2', icon: Zap },
+    { id: 'test', label: '🔍 בדיקה', icon: Star },
   ];
 
   // Fixed WhatsApp link with properly encoded Hebrew text
@@ -63,9 +64,9 @@ export function Navigation() {
                 <li key={item.id}>
                   <button
                     onClick={() => handleNavClick(item.id)}
-                    className={`transition-colors px-3 py-2 rounded-lg ${currentPage === item.id
-                        ? `font-semibold`
-                        : 'text-slate-700'
+                    className={`transition-colors px-3 py-2 rounded-lg text-sm ${currentPage === item.id
+                      ? `font-semibold`
+                      : 'text-slate-700'
                       }`}
                     style={{
                       color: currentPage === item.id ? inlineColors.primary.deep : undefined,
@@ -244,8 +245,8 @@ export function Navigation() {
                       <motion.button
                         onClick={() => handleNavClick(item.id)}
                         className={`w-full text-right transition-colors px-4 py-3 rounded-lg ${currentPage === item.id
-                            ? 'font-semibold'
-                            : 'text-slate-700'
+                          ? 'font-semibold'
+                          : 'text-slate-700'
                           }`}
                         style={{
                           color: currentPage === item.id ? inlineColors.primary.deep : undefined,
