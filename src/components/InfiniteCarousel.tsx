@@ -9,56 +9,28 @@ interface CarouselImage {
 }
 
 const carouselImages: CarouselImage[] = [
-  {
-    id: 1,
-    url: 'https://images.unsplash.com/photo-1693812080627-f5ce79abd438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwYnJpdCUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc2NDY3MTY0NHww&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'חגיגת ברית מושלמת'
-  },
-  {
-    id: 2,
-    url: 'https://images.unsplash.com/photo-1654851364032-ca4d7a47341c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxsb29uJTIwZGVjb3JhdGlvbnMlMjBwYXJ0eXxlbnwxfHx8fDE3NjQ2NzE2NDR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'עיצוב בלונים מרהיב'
-  },
-  {
-    id: 3,
-    url: 'https://images.unsplash.com/photo-1683821291961-e79e6d10a2cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnN0YW50JTIwY2FtZXJhJTIwcG9sYXJvaWR8ZW58MXx8fHwxNzY0NjY1MDkzfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'צילום מגנטים מיידי'
-  },
-  {
-    id: 4,
-    url: 'https://images.unsplash.com/photo-1627779543640-7ccec5c7fa62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwYmFsbG9vbnMlMjBiYWJ5fGVufDF8fHx8MTc2NDY3MTY0NXww&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'בלונים כחולים לברית'
-  },
-  {
-    id: 5,
-    url: 'https://images.unsplash.com/photo-1755704282977-340323fa52df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMGNlbGVicmF0aW9uJTIwZGVjb3J8ZW58MXx8fHwxNzY0NjcxNjQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'קישוטי מסיבה'
-  },
-  {
-    id: 6,
-    url: 'https://images.unsplash.com/photo-1738330943863-0f45d97e3455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwc2hvd2VyJTIwZGVjb3JhdGlvbnN8ZW58MXx8fHwxNzY0NjcwMDE0fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'עיצוב לתינוק'
-  },
-  {
-    id: 7,
-    url: 'https://images.unsplash.com/photo-1732831629066-4fd643d9c129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXN0ZWwlMjBiYWxsb29uc3xlbnwxfHx8fDE3NjQ2MTM1MTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'בלונים פסטל עדינים'
-  },
-  {
-    id: 8,
-    url: 'https://images.unsplash.com/photo-1610901158532-d246c011729e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXdib3JuJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzY0NjcxNjQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'צילום ניובורן'
-  },
-  {
-    id: 9,
-    url: 'https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxsb29uJTIwYXJjaCUyMHBhcnR5fGVufDF8fHx8MTc2NDY3MTY0N3ww&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'קשת בלונים'
-  },
-  {
-    id: 10,
-    url: 'https://images.unsplash.com/photo-1690814032912-a6d47152b2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZWxlYnJhdGlvbiUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc2NDY3MTY0N3ww&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'צילום חגיגות'
-  }
+  // Photos from walls/brit
+  { id: 1, url: '/img/walls/brit/a-00001.jpg', alt: 'חגיגת ברית מושלמת' },
+  { id: 2, url: '/img/walls/brit/a-00002.jpg', alt: 'עיצוב בלונים מרהיב' },
+  { id: 3, url: '/img/walls/brit/a-00003.jpg', alt: 'קיר צילום מעוצב' },
+  { id: 4, url: '/img/walls/brit/a-00004.jpg', alt: 'בלונים כחולים לברית' },
+  { id: 5, url: '/img/walls/brit/a-00005.jpeg', alt: 'קישוטי מסיבה' },
+  { id: 6, url: '/img/walls/brit/a-00006.jpg', alt: 'עיצוב לתינוק' },
+  { id: 7, url: '/img/walls/brit/a-00007.jpg', alt: 'בלונים פסטל עדינים' },
+  { id: 8, url: '/img/walls/brit/a-00008.jpg', alt: 'קיר בלונים מיוחד' },
+  { id: 9, url: '/img/walls/brit/a-00009.jpg', alt: 'קשת בלונים' },
+  { id: 10, url: '/img/walls/brit/a-00010.jpg', alt: 'עיצוב אלגנטי' },
+  // Photos from photo/brit
+  { id: 11, url: '/img/photo/brit/ph-brit00001.jpg', alt: 'צילום מגנטים מיידי' },
+  { id: 12, url: '/img/photo/brit/ph-brit00002.jpg', alt: 'רגעים מתוקים' },
+  { id: 13, url: '/img/photo/brit/ph-brit00003.jpg', alt: 'צילום משפחתי' },
+  { id: 14, url: '/img/photo/brit/ph-brit00004.jpg', alt: 'זיכרונות יפים' },
+  { id: 15, url: '/img/photo/brit/ph-brit00005.jpg', alt: 'צילום ניובורן' },
+  { id: 16, url: '/img/photo/brit/ph-brit00006.jpg', alt: 'רגעי אושר' },
+  { id: 17, url: '/img/photo/brit/ph-brit00007.jpg', alt: 'צילום מקצועי' },
+  { id: 18, url: '/img/photo/brit/ph-brit00008.jpeg', alt: 'חגיגת ברית' },
+  { id: 19, url: '/img/photo/brit/ph-brit00009.jpeg', alt: 'תמונות משפחה' },
+  { id: 20, url: '/img/photo/brit/ph-brit00010.jpg', alt: 'צילום חגיגות' },
 ];
 
 export function InfiniteCarousel() {
@@ -100,7 +72,7 @@ export function InfiniteCarousel() {
   useEffect(() => {
     const slideWidth = 100 / slidesToShow;
     const offset = -(currentIndex * slideWidth);
-    
+
     controls.start({
       x: `${offset}%`,
       transition: {
@@ -113,7 +85,7 @@ export function InfiniteCarousel() {
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const threshold = 50;
-    
+
     if (info.offset.x > threshold) {
       // Swipe right (previous)
       setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
@@ -127,7 +99,7 @@ export function InfiniteCarousel() {
   const displayImages = [...carouselImages, ...carouselImages, ...carouselImages];
 
   return (
-    <section 
+    <section
       className="py-12 bg-gradient-to-br from-[#faf8fb] to-white overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -181,11 +153,10 @@ export function InfiniteCarousel() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex % carouselImages.length
-                  ? 'bg-[#6b1a3d] w-6'
-                  : 'bg-[#c9a9b8]/40 hover:bg-[#c9a9b8]'
-              }`}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex % carouselImages.length
+                ? 'bg-[#6b1a3d] w-6'
+                : 'bg-[#c9a9b8]/40 hover:bg-[#c9a9b8]'
+                }`}
               aria-label={`Перейти к слайду ${index + 1}`}
             />
           ))}

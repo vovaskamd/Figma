@@ -14,12 +14,6 @@ export function Navigation() {
     { id: 'home', label: 'ראשי', icon: Camera },
     { id: 'brit', label: 'חבילות לברית', icon: Baby },
     { id: 'bar-mitzvah', label: 'חבילות לבר מצווה', icon: Star },
-    { id: 'photozone-builder', label: '🎨 קונסטרוקטור', icon: Palette },
-    { id: 'catalog', label: 'קטלוג מוצרים', icon: Gift },
-    { id: 'contact', label: 'צור קשר', icon: Phone },
-    { id: 'experiment', label: '🧪 ניסויים', icon: Sparkles },
-    { id: 'experiments2', label: '🧪 ניסויים 2', icon: Zap },
-    { id: 'test', label: '🔍 בדיקה', icon: Star },
   ];
 
   // Fixed WhatsApp link with properly encoded Hebrew text
@@ -29,7 +23,7 @@ export function Navigation() {
   const handleNavClick = (pageId: string) => {
     navigate(pageId === 'home' ? '/' : `/${pageId}`);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
