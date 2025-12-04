@@ -6,43 +6,39 @@ import { WhyChooseUs } from '../components/WhyChooseUs';
 import { StatsSection } from '../components/StatsSection';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Button } from '../components/ui/Button';
-import { InfiniteCarousel } from '../components/InfiniteCarousel';
-import { useState } from 'react';
+import { SimpleCarousel } from '../components/SimpleCarousel';
 import { colors, inlineColors } from '../styles/design-system';
+import { useEffect } from 'react';
 
 export function BritPage() {
+  // Scroll to top on mount (only if not navigating to anchor)
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   const whatsappLink = (text: string) =>
     `https://api.whatsapp.com/send?phone=972542330001&text=${encodeURIComponent(text)}`;
 
-  const [showAllImages, setShowAllImages] = useState(false);
-
   // Gallery images for brit
   const britImages: GalleryImage[] = [
-    { id: 1, url: '/img/walls/brit/a-00001.jpg', title: 'חגיגת ברית', description: 'אירוע ברית מושלם עם עיצוב מיוחד' },
-    { id: 2, url: '/img/walls/brit/a-00002.jpg', title: 'בלונים כחולים', description: 'בלונים בגוון כחול עדין לברית בן' },
-    { id: 3, url: '/img/walls/brit/a-00003.jpg', title: 'עיצוב לתינוק', description: 'קישוטים מרהיבים לאירוע התינוק' },
-    { id: 4, url: '/img/walls/brit/a-00004.jpg', title: 'צילום ניובורן', description: 'צילום מקצועי לתינוקות' },
-    { id: 5, url: '/img/walls/brit/a-00005.jpeg', title: 'מסיבת תינוקות', description: 'בלונים צבעוניים למסיבת תינוקות' },
-    { id: 6, url: '/img/walls/brit/a-00006.jpg', title: 'חגיגת בן', description: 'אירוע חגיגי לברית בן' },
-    { id: 7, url: '/img/walls/brit/a-00007.jpg', title: 'בלונים פסטל', description: 'עיצוב בלונים בגוונים עדינים' },
-    { id: 8, url: '/img/walls/brit/a-00008.jpg', title: 'צילום אירועים', description: 'צילום מקצועי לאירועי תינוקות' },
-    { id: 9, url: '/img/walls/brit/a-00009.jpg', title: 'אבני דרך', description: 'חגיגת אבני דרך מיוחדות' },
-    { id: 10, url: '/img/walls/brit/a-00010.jpg', title: 'קשת בלונים', description: 'קשת בלונים מרהיבה לברית' },
-    { id: 11, url: '/img/walls/brit/a-00011.jpg', title: 'מצלמת פולרויד', description: 'צילום מיידי לזיכרון' },
-    { id: 12, url: '/img/walls/brit/a-00012.jpg', title: 'בלונים כחול לבן', description: 'שילוב מושלם של כחול ולבן' },
-    { id: 13, url: '/img/walls/brit/a-00013.jpg', title: 'קישוט חגיגי', description: 'עיצוב חגיגי מושלם' },
-    { id: 14, url: '/img/walls/brit/a-00014.jpg', title: 'קישוטי מסיבה', description: 'קישוטים בגוונים פסטליים' },
-    { id: 15, url: '/img/walls/brit/a-00015.jpg', title: 'אביזרי צילום', description: 'אביזרים מקסימים לצילום תינוקות' },
-    { id: 16, url: '/img/walls/brit/a-00016.jpg', title: 'עיצוב מיוחד', description: 'עיצוב ייחודי לברית' },
-    { id: 17, url: '/img/walls/brit/a-00017.jpg', title: 'בלונים מעוצבים', description: 'בלונים בעיצוב מיוחד' },
-    { id: 18, url: '/img/walls/brit/a-00018.jpg', title: 'פינת צילום', description: 'פינת צילום מושלמת' },
-    { id: 19, url: '/img/walls/brit/a-00019.jpg', title: 'קישוטים עדינים', description: 'קישוטים בגוונים עדינים' },
-    { id: 20, url: '/img/walls/brit/a-00020.jpg', title: 'עיצוב קלאסי', description: 'עיצוב קלאסי ואלגנטי' },
-    { id: 21, url: '/img/walls/brit/a-00021.jpg', title: 'בלונים מיוחדים', description: 'בלונים בצורות מיוחדות' },
-    { id: 22, url: '/img/walls/brit/a-00022.JPG', title: 'אירוע מושלם', description: 'אירוע ברית מושלם' },
+    { id: 1, url: 'https://images.unsplash.com/photo-1683395826489-911a209cbca8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwYnJpdCUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc2NDUyNTEyNnww&ixlib=rb-4.1.0&q=80&w=1080', title: 'חגיגת ברית', description: 'אירוע ברית מושלם עם עיצוב מיוחד' },
+    { id: 2, url: 'https://images.unsplash.com/photo-1627779543640-7ccec5c7fa62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwYmFsbG9vbnMlMjBiYWJ5fGVufDF8fHx8MTc2NDQwMzk3M3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'בלונים כחולים', description: 'בלונים בגוון כחול עדין לברית בן' },
+    { id: 3, url: 'https://images.unsplash.com/photo-1738330943863-0f45d97e3455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwc2hvd2VyJTIwZGVjb3JhdGlvbnN8ZW58MXx8fHwxNzY0NTI1MTI2fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'עיצוב לתינוק', description: 'קישוטים מרהיבים לאירוע התינוק' },
+    { id: 4, url: 'https://images.unsplash.com/photo-1610901158478-af3eac4a9339?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXdib3JuJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzY0NTI1MTI3fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'צילום ניובורן', description: 'צילום מקצועי לתינוקות' },
+    { id: 5, url: 'https://images.unsplash.com/photo-1687186511607-68b95444ea33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwcGFydHklMjBiYWxsb29uc3xlbnwxfHx8fDE3NjQ1MjUxMjd8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'מסיבת תינוקות', description: 'בלונים צבעוניים למסיבת תינוקות' },
+    { id: 6, url: 'https://images.unsplash.com/photo-1624596255415-a5ac41f66a28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwYm95JTIwY2VsZWJyYXRpb258ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'חגיגת בן', description: 'אירוע חגיגי לברית בן' },
+    { id: 7, url: 'https://images.unsplash.com/photo-1759433582490-54f92e32c6fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXN0ZWwlMjBiYWxsb29ucyUyMGRlY29yfGVufDF8fHx8MTc2NDUyNTEyOXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'בלונים פסטל', description: 'עיצוב בלונים בגוונים עדינים' },
+    { id: 8, url: 'https://images.unsplash.com/photo-1609761315264-40ec563f230d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwZXZlbnQlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3NjQ1MjUxMjl8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'צילום אירועים', description: 'צילום מקצועי לאירועי תינוקות' },
+    { id: 9, url: 'https://images.unsplash.com/photo-1763013259213-0c3d639bbcc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwbWlsZXN0b25lJTIwY2VsZWJyYXRpb258ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'אבני דרך', description: 'חגיגת אבני דרך מיוחדות' },
+    { id: 10, url: 'https://images.unsplash.com/photo-1599627888307-1a2ff920709e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxsb29uJTIwYXJjaCUyMGJhYnl8ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'קשת בלונים', description: 'קשת בלונים מרהיבה לברית' },
+    { id: 11, url: 'https://images.unsplash.com/photo-1683821291961-e79e6d10a2cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnN0YW50JTIwY2FtZXJhJTIwcG9sYXJvaWR8ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'מצלמת פולרויד', description: 'צילום מיידי לזיכרון' },
+    { id: 12, url: 'https://images.unsplash.com/photo-1760329290960-c048628d92c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwd2hpdGUlMjBiYWxsb29uc3xlbnwxfHx8fDE3NjQ1MjUxMzB8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'בלונים כחול לבן', description: 'שילוב מושלם של כחול ולבן' },
+    { id: 13, url: 'https://images.unsplash.com/photo-1758548204223-b830a3224f73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwY2VsZWJyYXRpb24lMjBkZWNvcnxlbnwxfHx8fDE3NjQ1MjUxMzB8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'קישוט חגיגי', description: 'עיצוב חגיגי מושלם' },
+    { id: 14, url: 'https://images.unsplash.com/photo-1734987522171-32d3475bb755?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMGRlY29yYXRpb25zJTIwcGFzdGVsfGVufDF8fHx8MTc2NDUyNTEzMHww&ixlib=rb-4.1.0&q=80&w=1080', title: 'קישוטי מסיבה', description: 'קישוטים בגוונים פסטליים' },
+    { id: 15, url: 'https://images.unsplash.com/photo-1741900461118-fd681b35addb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwcGhvdG8lMjBwcm9wc3xlbnwxfHx8fDE3NjQ1MjUxMzF8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'אביזרי צילום', description: 'אביזרים מקסימים לצילום תינוקות' },
   ];
-
-  const displayedImages = showAllImages ? britImages : britImages.slice(0, 10);
 
   return (
     <div className="min-h-screen bg-[#faf8fb]">
@@ -54,7 +50,7 @@ export function BritPage() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-4xl mx-auto"
         >
-          <motion.h1
+          <motion.h1 
             className={`text-5xl md:text-7xl mb-6 ${colors.gradients.textSecondary}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -62,7 +58,7 @@ export function BritPage() {
           >
             צוותים של אלופים
           </motion.h1>
-
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,7 +82,7 @@ export function BritPage() {
             <Button variant="primary" href="#packages">
               לראות את חבילות הברית
             </Button>
-            <Button
+            <Button 
               variant="secondary"
               href={whatsappLink('שלום, אני רוצה לשמוע על חבילות לברית')}
               target="_blank"
@@ -98,8 +94,8 @@ export function BritPage() {
         </motion.div>
       </section>
 
-      {/* Infinite Carousel */}
-      <InfiniteCarousel />
+      {/* Simple Carousel */}
+      <SimpleCarousel />
 
       {/* Contact CTA Section */}
       <section className="py-16 bg-white">
@@ -147,7 +143,7 @@ export function BritPage() {
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white rounded-full hover:shadow-xl transition-all transform hover:scale-105"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 <span className="text-lg">וואטסאפ</span>
               </a>
@@ -250,7 +246,7 @@ export function BritPage() {
             >
               חבילה אחת שדואגת לכל הזיכרונות מהאירוע
             </motion.h2>
-
+            
             <motion.p
               className="text-2xl md:text-3xl text-slate-700"
               initial={{ opacity: 0, y: 20 }}
@@ -302,7 +298,7 @@ export function BritPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div
+              <div 
                 style={{ backgroundColor: inlineColors.primary.deep }}
                 className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
               >
@@ -400,7 +396,7 @@ export function BritPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div
+              <div 
                 style={{ backgroundColor: inlineColors.primary.deep }}
                 className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
               >
@@ -448,30 +444,11 @@ export function BritPage() {
       {/* Gallery */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <GalleryTemplate
-            images={displayedImages}
+          <GalleryTemplate 
+            images={britImages}
             title="הגלריה שלנו"
             subtitle=""
           />
-
-          {!showAllImages && britImages.length > 10 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mt-8"
-            >
-              <button
-                onClick={() => setShowAllImages(true)}
-                style={{
-                  background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
-                }}
-                className="px-8 py-3 text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105"
-              >
-                הצג עוד תמונות ({britImages.length - 10} נוספות)
-              </button>
-            </motion.div>
-          )}
         </div>
       </section>
 

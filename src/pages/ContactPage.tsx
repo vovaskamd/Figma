@@ -1,8 +1,14 @@
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from 'lucide-react';
 import { inlineColors } from '../styles/design-system';
+import { useEffect } from 'react';
 
 export function ContactPage() {
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const whatsappLink = 'https://api.whatsapp.com/send?phone=972542330001&text=שלום, אני רוצה לשמוע עוד פרטים';
 
   const contactInfo = [

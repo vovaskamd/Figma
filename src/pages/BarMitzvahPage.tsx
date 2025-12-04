@@ -6,25 +6,67 @@ import { WhyChooseUs } from '../components/WhyChooseUs';
 import { StatsSection } from '../components/StatsSection';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Button } from '../components/ui/Button';
-import { InfiniteCarousel } from '../components/InfiniteCarousel';
-import { useState } from 'react';
+import { SimpleCarousel } from '../components/SimpleCarousel';
 import { colors, inlineColors } from '../styles/design-system';
+import { useEffect, useState } from 'react';
 
 export function BarMitzvahPage() {
+  // Scroll to top on mount (only if not navigating to anchor)
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
+  // Text slider state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [
+    {
+      line1: 'צוותים מנוסים שנבחרו בקפידה',
+      line2: 'צלם, בלונים, קייטרינג ואפילו קיפות'
+    },
+    {
+      line1: 'שקיפות מחירים',
+      line2: 'הפקת אירוע מא׳ עד ת׳',
+      line3: 'הכל במקום אחד'
+    },
+    {
+      line1: 'אנחנו יודעים טוב מאוד',
+      line2: 'איך לעשות אירוע מושלם'
+    },
+    {
+      line1: 'בחבילה המחיר תמיד יותר משתלם'
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const whatsappLink = (text: string) =>
     `https://api.whatsapp.com/send?phone=972542330001&text=${encodeURIComponent(text)}`;
 
-  const [showAllImages, setShowAllImages] = useState(false);
-
   // Gallery images for bar mitzvah
   const barMitzvahImages: GalleryImage[] = [
-    { id: 1, url: '/img/batmizvah/a-00002.jpg', title: 'בר מצווה', description: 'חגיגת בר מצווה מרהיבה' },
-    { id: 2, url: '/img/batmizvah/a-00003.jpg', title: 'בלונים כחול זהב', description: 'עיצוב בלונים אלגנטי' },
-    { id: 3, url: '/img/batmizvah/a-00009.jpg', title: 'עיצוב יהודי', description: 'קישוטים מיוחדים לבר מצווה' },
-    { id: 4, url: '/img/batmizvah/a-00010.jpg', title: 'צילום אלגנטי', description: 'צילום מקצועי לאירוע' },
+    { id: 1, url: 'https://images.unsplash.com/photo-1660234874694-b4b9b18ce6ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXIlMjBtaXR6dmFoJTIwY2VsZWJyYXRpb258ZW58MXx8fHwxNzY0NzUxMzQwfDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'בר מצווה', description: 'חגיגת בר מצווה מרהיבה' },
+    { id: 2, url: 'https://images.unsplash.com/photo-1727718550302-6998c908d7c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwZ29sZCUyMGJhbGxvb25zJTIwcGFydHl8ZW58MXx8fHwxNzY0NzUxMzQxfDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'בלונים כחול זהב', description: 'עיצוב בלונים אלגנטי' },
+    { id: 3, url: 'https://images.unsplash.com/photo-1661919858163-6d56dc4bec97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqZXdpc2glMjBjZWxlYnJhdGlvbiUyMGRlY29yYXRpb25zfGVufDF8fHx8MTc2NDc1MTM0MXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'עיצוב יהודי', description: 'קישוטים מיוחדים לבר מצווה' },
+    { id: 4, url: 'https://images.unsplash.com/photo-1738669469256-196b85ef65f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcGFydHklMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3NjQ3NTEzNDF8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'צילום אלגנטי', description: 'צילום מקצועי לאירוע' },
+    { id: 5, url: 'https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxsb29uJTIwYXJjaCUyMGV2ZW50fGVufDF8fHx8MTc2NDY4NjU4N3ww&ixlib=rb-4.1.0&q=80&w=1080', title: 'קשת בלונים', description: 'קשת בלונים מרהיבה לאירוע' },
+    { id: 6, url: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMGJhbGxvb25zJTIwYmFja2Ryb3B8ZW58MXx8fHwxNzMyOTg5NzQyfDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'רקע בלונים', description: 'רקע מושלם לצילומים' },
+    { id: 7, url: 'https://images.unsplash.com/photo-1759433582490-54f92e32c6fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXN0ZWwlMjBiYWxsb29ucyUyMGRlY29yfGVufDF8fHx8MTc2NDUyNTEyOXww&ixlib=rb-4.1.0&q=80&w=1080', title: 'בלונים פסטל', description: 'עיצוב בגוונים עדינים' },
+    { id: 8, url: 'https://images.unsplash.com/photo-1718096551424-910dff37709f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMHBob3RvZ3JhcGh5JTIwZXZlbnR8ZW58MXx8fHwxNzY0NTE1ODA4fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'צילום אירועים', description: 'צילום מקצועי לאירוע' },
+    { id: 9, url: 'https://images.unsplash.com/photo-1683821291961-e79e6d10a2cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnN0YW50JTIwY2FtZXJhJTIwcG9sYXJvaWR8ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'מצלמת פולרויד', description: 'צילום מיידי לזיכרון' },
+    { id: 10, url: 'https://images.unsplash.com/photo-1599627888307-1a2ff920709e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxsb29uJTIwYXJjaCUyMGJhYnl8ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'קשת בלונים ענקית', description: 'עיצוב מרשים לאירוע גדול' },
+    { id: 11, url: 'https://images.unsplash.com/photo-1734987522171-32d3475bb755?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMGRlY29yYXRpb25zJTIwcGFzdGVsfGVufDF8fHx8MTc2NDUyNTEzMHww&ixlib=rb-4.1.0&q=80&w=1080', title: 'קישוטי מסיבה', description: 'קישוטים בגוונים פסטליים' },
+    { id: 12, url: 'https://images.unsplash.com/photo-1741900461118-fd681b35addb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwcGhvdG8lMjBwcm9wc3xlbnwxfHx8fDE3NjQ1MjUxMzF8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'אביזרי צילום', description: 'אביזרים מיוחדים לצילום' },
+    { id: 13, url: 'https://images.unsplash.com/photo-1758548204223-b830a3224f73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwY2VsZWJyYXRpb24lMjBkZWNvcnxlbnwxfHx8fDE3NjQ1MjUxMzB8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'קישוט חגיגי', description: 'עיצוב חגיגי מושלם' },
+    { id: 14, url: 'https://images.unsplash.com/photo-1760329290960-c048628d92c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwd2hpdGUlMjBiYWxsb29uc3xlbnwxfHx8fDE3NjQ1MjUxMzB8MA&ixlib=rb-4.1.0&q=80&w=1080', title: 'בלונים כחול לבן', description: 'שילוב מושלם של כחול ולבן' },
+    { id: 15, url: 'https://images.unsplash.com/photo-1763013259213-0c3d639bbcc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWJ5JTIwbWlsZXN0b25lJTIwY2VsZWJyYXRpb258ZW58MXx8fHwxNzY0NTI1MTI5fDA&ixlib=rb-4.1.0&q=80&w=1080', title: 'אבני דרך', description: 'חגיגת אבני דרך מיוחדות' },
   ];
-
-  const displayedImages = showAllImages ? barMitzvahImages : barMitzvahImages.slice(0, 10);
 
   return (
     <div className="min-h-screen bg-[#faf8fb]">
@@ -36,39 +78,76 @@ export function BarMitzvahPage() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-4xl mx-auto"
         >
-          <motion.h1
-            className={`text-5xl md:text-7xl mb-6 ${colors.gradients.textSecondary}`}
+          <motion.h1 
+            className={`text-4xl md:text-6xl mb-6 ${colors.gradients.textSecondary}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            צוותים של אלופים
+            הפקת בר מצווה באיכות הכי טובה באותו במחיר!
           </motion.h1>
-
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed"
           >
-            <span>צלם מגנטים</span>
-            <span className="mx-2">+</span>
-            <span>מעצב בלונים</span>
-            <div className="mt-4 text-2xl md:text-3xl">
-              = אירגון נח ואירוע מושלם
-            </div>
+            אירגון בר מצווה מושלם ונוח - תמצאי אצלנו כל מה שחיפשת
+          </motion.div>
+
+          {/* Flying Words from Right */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col items-center gap-4 mb-12"
+          >
+            {[
+              { text: 'צילום', delay: 0.7 },
+              { text: 'בלונים', delay: 0.9 },
+              { text: 'משחקים', delay: 1.1 },
+              { text: 'מיתוג אישי', delay: 1.3 },
+              { text: 'קייטרינג', delay: 1.5 }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ 
+                  opacity: 0, 
+                  x: 200
+                }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0
+                }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: item.delay,
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 15
+                }}
+                className="text-2xl md:text-3xl"
+                style={{ 
+                  color: '#3D1152',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+                }}
+              >
+                {item.text}
+              </motion.div>
+            ))}
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 1.3 }}
             className="flex flex-wrap gap-4 justify-center mt-12"
           >
             <Button variant="primary" href="#packages">
               לראות את חבילות בר המצווה
             </Button>
-            <Button
+            <Button 
               variant="secondary"
               href={whatsappLink('שלום, אני רוצה לשמוע על חבילות לבר מצווה')}
               target="_blank"
@@ -80,8 +159,8 @@ export function BarMitzvahPage() {
         </motion.div>
       </section>
 
-      {/* Infinite Carousel */}
-      <InfiniteCarousel />
+      {/* Simple Carousel */}
+      <SimpleCarousel />
 
       {/* Contact CTA Section */}
       <section className="py-16 bg-white">
@@ -127,7 +206,7 @@ export function BarMitzvahPage() {
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white rounded-full hover:shadow-xl transition-all transform hover:scale-105"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 <span className="text-lg">וואטסאפ</span>
               </a>
@@ -230,16 +309,37 @@ export function BarMitzvahPage() {
             >
               חבילה אחת שדואגת לכל הזיכרונות מהאירוע
             </motion.h2>
-
-            <motion.p
-              className="text-2xl md:text-3xl text-slate-700"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              מקבלים יותר באותו מחיר
-            </motion.p>
+            
+            {/* Text Slider */}
+            <div className="relative h-32 md:h-40 overflow-hidden">
+              {slides.map((slide, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{
+                    opacity: currentSlide === index ? 1 : 0,
+                    y: currentSlide === index ? 0 : 50
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+                  style={{ pointerEvents: currentSlide === index ? 'auto' : 'none' }}
+                >
+                  <p className="text-2xl md:text-3xl text-slate-700">
+                    {slide.line1}
+                  </p>
+                  {slide.line2 && (
+                    <p className="text-xl md:text-2xl text-slate-600">
+                      {slide.line2}
+                    </p>
+                  )}
+                  {slide.line3 && (
+                    <p className="text-xl md:text-2xl text-slate-600">
+                      {slide.line3}
+                    </p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
 
             {/* Decorative accent */}
             <motion.div
@@ -282,7 +382,7 @@ export function BarMitzvahPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div
+              <div 
                 style={{ backgroundColor: inlineColors.primary.deep }}
                 className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
               >
@@ -381,7 +481,7 @@ export function BarMitzvahPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8"
             >
-              <div
+              <div 
                 style={{ backgroundColor: inlineColors.primary.deep }}
                 className="inline-block text-white px-4 py-1 rounded-full text-sm mb-4"
               >
@@ -434,30 +534,11 @@ export function BarMitzvahPage() {
       {/* Gallery */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <GalleryTemplate
-            images={displayedImages}
+          <GalleryTemplate 
+            images={barMitzvahImages}
             title="הגלריה שלנו"
             subtitle=""
           />
-
-          {!showAllImages && barMitzvahImages.length > 10 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mt-8"
-            >
-              <button
-                onClick={() => setShowAllImages(true)}
-                style={{
-                  background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
-                }}
-                className="px-8 py-3 text-white rounded-full hover:shadow-lg transition-all transform hover:scale-105"
-              >
-                הצג עוד תמונות ({barMitzvahImages.length - 10} נוספות)
-              </button>
-            </motion.div>
-          )}
         </div>
       </section>
 

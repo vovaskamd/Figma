@@ -12,15 +12,15 @@ export function WhyChooseUs() {
     },
     {
       icon: MapPin,
-      title: 'הגעה לכל אזור המרכז',
-      description: 'אנחנו מגיעים עד אליכם – עובדים בכל הארץ.',
+      title: 'הגעה לכל הארץ',
+      description: 'מגיעים עד אליכם, מורכבים ומפרקים.',
       color: 'from-[#d4a5b3] to-[#9d7b8f]',
       delay: 0.2
     },
     {
       icon: Zap,
       title: 'שירות מהיר ואדיב',
-      description: 'זמינות גבוהה, יחס אישי ותיאום פשוט דרך WhatsApp.',
+      description: 'מוכנים להזמנות מהיום למחר בתיאום פשוט דרך וואטסאפ',
       color: 'from-[#9d7b8f] to-[#5d1f6a]',
       delay: 0.3
     }

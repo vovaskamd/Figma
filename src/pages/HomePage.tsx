@@ -1,13 +1,13 @@
 import { motion } from 'motion/react';
 import { Camera, Gift, Sparkles, Star, Heart, PartyPopper } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { colors, buttonStyles, sectionStyles, inlineColors } from '../styles/design-system';
 
-export function HomePage() {
-  const navigate = useNavigate();
-  const onNavigate = (page: string) => navigate(page === 'home' ? '/' : `/${page}`);
+interface HomePageProps {
+  onNavigate: (page: string) => void;
+}
 
+export function HomePage({ onNavigate }: HomePageProps) {
   const whatsappLink = (text: string) =>
     `https://api.whatsapp.com/send?phone=972542330001&text=${encodeURIComponent(text)}`;
 
@@ -65,12 +65,13 @@ export function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Pattern */}
-        <div
+        <div 
           className="absolute inset-0 opacity-90"
           style={{
             background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
           }}
         />
+        
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
@@ -142,7 +143,7 @@ export function HomePage() {
       </section>
 
       {/* Services Grid */}
-      <section
+      <section 
         className="py-20"
         style={{
           background: `linear-gradient(to bottom right, ${inlineColors.primary.paleBlush}, white, ${inlineColors.primary.blush}15)`
@@ -184,7 +185,7 @@ export function HomePage() {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3 mb-3">
-                      <div
+                      <div 
                         style={{
                           background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
                         }}
@@ -207,7 +208,7 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section
+      <section 
         className="py-20"
         style={{
           background: `linear-gradient(to bottom right, ${inlineColors.primary.blush}15, ${inlineColors.primary.paleBlush})`
@@ -235,7 +236,7 @@ export function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15, duration: 0.5 }}
               >
-                <div
+                <div 
                   style={{
                     background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.light})`
                   }}
@@ -252,7 +253,7 @@ export function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section
+      <section 
         className="py-20 relative overflow-hidden"
         style={{
           background: `linear-gradient(to right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
@@ -289,9 +290,8 @@ export function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <PartyPopper className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="mb-6 text-3xl md:text-4xl">מוכנים להפוך את האירוע שלכם לבלתי נשכח?</h2>
-            <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+            <h2 className="mb-6">מוכנים להפוך את האירוע שלכם לבלתי נשכח?</h2>
+            <p className="text-xl mb-8 text-white/90">
               צרו איתנו קשר עוד היום ונתחיל לתכנן ביחד
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

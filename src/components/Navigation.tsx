@@ -1,19 +1,23 @@
 import { useState } from 'react';
-import { Camera, Baby, Star, Gift, Phone, Sparkles, Menu, X, MessageCircle, Palette, Zap } from 'lucide-react';
+import { Camera, Baby, Star, Gift, Phone, Sparkles, Menu, X, MessageCircle, Palette, Zap, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { colors, animationColors, inlineColors } from '../styles/design-system';
 
-export function Navigation() {
+interface NavigationProps {
+  currentPage: string;
+  onNavigate: (page: string) => void;
+}
+
+export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const currentPage = location.pathname.replace('/', '') || 'home';
 
   const navItems = [
     { id: 'home', label: 'ראשי', icon: Camera },
     { id: 'brit', label: 'חבילות לברית', icon: Baby },
     { id: 'bar-mitzvah', label: 'חבילות לבר מצווה', icon: Star },
+    { id: 'blog', label: 'מאמרים', icon: FileText },
+    { id: 'catalog', label: 'קטלוג מוצרים', icon: Gift },
+    { id: 'contact', label: 'צור קשר', icon: Phone },
   ];
 
   // Fixed WhatsApp link with properly encoded Hebrew text
@@ -21,9 +25,9 @@ export function Navigation() {
   const phoneNumber = 'tel:+972542330001';
 
   const handleNavClick = (pageId: string) => {
-    navigate(pageId === 'home' ? '/' : `/${pageId}`);
+    onNavigate(pageId);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -35,7 +39,7 @@ export function Navigation() {
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <motion.div
+            <motion.div 
               style={{
                 background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
               }}
@@ -58,10 +62,11 @@ export function Navigation() {
                 <li key={item.id}>
                   <button
                     onClick={() => handleNavClick(item.id)}
-                    className={`transition-colors px-3 py-2 rounded-lg text-sm ${currentPage === item.id
-                      ? `font-semibold`
-                      : 'text-slate-700'
-                      }`}
+                    className={`transition-colors px-3 py-2 rounded-lg ${
+                      currentPage === item.id
+                        ? `font-semibold`
+                        : 'text-slate-700'
+                    }`}
                     style={{
                       color: currentPage === item.id ? inlineColors.primary.deep : undefined,
                       backgroundColor: currentPage === item.id ? `${inlineColors.primary.blush}40` : 'transparent'
@@ -169,8 +174,8 @@ export function Navigation() {
                       top: '100%',
                     }}
                     initial={{ y: 0, opacity: 0 }}
-                    animate={{
-                      y: -200,
+                    animate={{ 
+                      y: -200, 
                       opacity: [0, 0.6, 0],
                       x: [0, Math.sin(i) * 20]
                     }}
@@ -202,7 +207,7 @@ export function Navigation() {
                       top: `${Math.random() * 100}%`,
                     }}
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{
+                    animate={{ 
                       scale: [0, 1, 0],
                       opacity: [0, 1, 0],
                       rotate: [0, 180, 360]
@@ -238,10 +243,11 @@ export function Navigation() {
                     >
                       <motion.button
                         onClick={() => handleNavClick(item.id)}
-                        className={`w-full text-right transition-colors px-4 py-3 rounded-lg ${currentPage === item.id
-                          ? 'font-semibold'
-                          : 'text-slate-700'
-                          }`}
+                        className={`w-full text-right transition-colors px-4 py-3 rounded-lg ${
+                          currentPage === item.id
+                            ? 'font-semibold'
+                            : 'text-slate-700'
+                        }`}
                         style={{
                           color: currentPage === item.id ? inlineColors.primary.deep : undefined,
                           backgroundColor: currentPage === item.id ? `${inlineColors.primary.blush}40` : 'transparent'
@@ -289,7 +295,7 @@ export function Navigation() {
                       <MessageCircle className="w-5 h-5" />
                       <span>שלח הודעה בוואטסאפ</span>
                     </motion.a>
-
+                    
                     {/* Call Button - Argaman colors */}
                     <motion.a
                       href={phoneNumber}

@@ -1,18 +1,20 @@
 import { Camera, Phone, Mail, MapPin, Flower2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { inlineColors } from '../styles/design-system';
 
-export function Footer() {
-  const navigate = useNavigate();
+interface FooterProps {
+  onNavigate: (page: string) => void;
+}
+
+export function Footer({ onNavigate }: FooterProps) {
   const whatsappLink = 'https://api.whatsapp.com/send?phone=972542330001&text=שלום, אני רוצה לשמוע עוד פרטים';
 
   const handleNavClick = (pageId: string) => {
-    navigate(pageId === 'home' ? '/' : `/${pageId}`);
+    onNavigate(pageId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer
+    <footer 
       className="text-slate-800 py-12 border-t border-[#e0e0e0]"
       style={{
         backgroundColor: `${inlineColors.primary.blush}20`
@@ -23,7 +25,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="text-center md:text-right bg-[rgba(230,23,23,0)]">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-4 bg-[rgba(32,255,110,0)]">
-              <div
+              <div 
                 style={{
                   background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium})`
                 }}

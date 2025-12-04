@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Camera, Baby, Sparkles, Heart, Gift } from 'lucide-react';
-import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
@@ -11,15 +10,18 @@ import { CatalogPage } from './pages/CatalogPage';
 import { ContactPage } from './pages/ContactPage';
 import { ExperimentPage } from './pages/ExperimentPage';
 import { PhotozoneBuilderPage } from './pages/PhotozoneBuilderPage';
-import { TestPage } from './pages/TestPage';
 import { Experiments2Page } from './pages/Experiments2Page';
+import { BlogPage } from './pages/BlogPage';
+import { BlogCategoryPage } from './pages/BlogCategoryPage';
+import { BlogArticlePage } from './pages/BlogArticlePage';
 import { CameraShutterLoader } from './components/CameraShutterLoader';
 import { inlineColors, animationColors } from './styles/design-system';
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [progress, setProgress] = useState(0);
-  const location = useLocation();
+  const [currentPage, setCurrentPage] = useState('home');
+  const [isPageLoading, setIsPageLoading] = useState(false);
 
   useEffect(() => {
     if (showIntro) {
@@ -46,7 +48,50 @@ export default function App() {
     }
   }, [progress]);
 
+  // Handle page navigation with loading animation
+  const handlePageChange = (page: string) => {
+    if (page !== currentPage) {
+      setIsPageLoading(true);
+      // Scroll to top immediately
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Simulate page loading time
+      setTimeout(() => {
+        setCurrentPage(page);
+        setTimeout(() => {
+          setIsPageLoading(false);
+        }, 1000); // Duration of shutter animation
+      }, 100);
+    }
+  };
 
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <HomePage onNavigate={handlePageChange} />;
+      case 'brit':
+        return <BritPage />;
+      case 'bar-mitzvah':
+        return <BarMitzvahPage />;
+      case 'catalog':
+        return <CatalogPage onNavigate={handlePageChange} />;
+      case 'contact':
+        return <ContactPage />;
+      case 'experiment':
+        return <ExperimentPage />;
+      case 'photozone-builder':
+        return <PhotozoneBuilderPage />;
+      case 'experiments2':
+        return <Experiments2Page />;
+      case 'blog':
+        return <BlogPage onNavigate={handlePageChange} />;
+      case 'blog-category':
+        return <BlogCategoryPage />;
+      case 'blog-article':
+        return <BlogArticlePage />;
+      default:
+        return <HomePage onNavigate={handlePageChange} />;
+    }
+  };
 
   return (
     <div className="min-h-screen" dir="rtl" lang="he">
@@ -58,7 +103,7 @@ export default function App() {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="fixed inset-0 z-50"
           >
-            <div
+            <div 
               className="relative w-full h-full overflow-hidden"
               style={{
                 background: `linear-gradient(to bottom right, ${inlineColors.primary.deep}, ${inlineColors.primary.medium}, ${inlineColors.primary.light})`
@@ -211,7 +256,7 @@ export default function App() {
                     <div className="h-3 bg-white/40 rounded-full overflow-hidden">
                       <motion.div
                         className="h-full relative"
-                        style={{
+                        style={{ 
                           background: `linear-gradient(to right, ${inlineColors.primary.light}, ${inlineColors.primary.medium}, ${inlineColors.primary.deep})`
                         }}
                         initial={{ width: '0%' }}
@@ -273,24 +318,34 @@ export default function App() {
             transition={{ duration: 1, ease: 'easeOut' }}
             className="min-h-screen"
           >
-            <Navigation />
+            <Navigation currentPage={currentPage} onNavigate={handlePageChange} />
+            
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {renderPage()}
+            </motion.div>
 
-            <AnimatePresence mode="wait">
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/brit" element={<BritPage />} />
-                <Route path="/bar-mitzvah" element={<BarMitzvahPage />} />
-                <Route path="/catalog" element={<CatalogPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/experiment" element={<ExperimentPage />} />
-                <Route path="/photozone-builder" element={<PhotozoneBuilderPage />} />
-                <Route path="/experiments2" element={<Experiments2Page />} />
-                <Route path="*" element={<HomePage />} />
-              </Routes>
+            <Footer onNavigate={handlePageChange} />
+
+            {/* Camera Shutter Loader Overlay */}
+            <AnimatePresence>
+              {isPageLoading && (
+                <motion.div
+                  key="shutter-loader"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <CameraShutterLoader />
+                </motion.div>
+              )}
             </AnimatePresence>
-
-            <Footer />
           </motion.div>
         )}
       </AnimatePresence>

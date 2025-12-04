@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useAnimation, PanInfo } from 'motion/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface CarouselImage {
   id: number;
@@ -9,28 +10,106 @@ interface CarouselImage {
 }
 
 const carouselImages: CarouselImage[] = [
-  // Photos from walls/brit
-  { id: 1, url: '/img/walls/brit/a-00001.jpg', alt: 'חגיגת ברית מושלמת' },
-  { id: 2, url: '/img/walls/brit/a-00002.jpg', alt: 'עיצוב בלונים מרהיב' },
-  { id: 3, url: '/img/walls/brit/a-00003.jpg', alt: 'קיר צילום מעוצב' },
-  { id: 4, url: '/img/walls/brit/a-00004.jpg', alt: 'בלונים כחולים לברית' },
-  { id: 5, url: '/img/walls/brit/a-00005.jpeg', alt: 'קישוטי מסיבה' },
-  { id: 6, url: '/img/walls/brit/a-00006.jpg', alt: 'עיצוב לתינוק' },
-  { id: 7, url: '/img/walls/brit/a-00007.jpg', alt: 'בלונים פסטל עדינים' },
-  { id: 8, url: '/img/walls/brit/a-00008.jpg', alt: 'קיר בלונים מיוחד' },
-  { id: 9, url: '/img/walls/brit/a-00009.jpg', alt: 'קשת בלונים' },
-  { id: 10, url: '/img/walls/brit/a-00010.jpg', alt: 'עיצוב אלגנטי' },
-  // Photos from photo/brit
-  { id: 11, url: '/img/photo/brit/ph-brit00001.jpg', alt: 'צילום מגנטים מיידי' },
-  { id: 12, url: '/img/photo/brit/ph-brit00002.jpg', alt: 'רגעים מתוקים' },
-  { id: 13, url: '/img/photo/brit/ph-brit00003.jpg', alt: 'צילום משפחתי' },
-  { id: 14, url: '/img/photo/brit/ph-brit00004.jpg', alt: 'זיכרונות יפים' },
-  { id: 15, url: '/img/photo/brit/ph-brit00005.jpg', alt: 'צילום ניובורן' },
-  { id: 16, url: '/img/photo/brit/ph-brit00006.jpg', alt: 'רגעי אושר' },
-  { id: 17, url: '/img/photo/brit/ph-brit00007.jpg', alt: 'צילום מקצועי' },
-  { id: 18, url: '/img/photo/brit/ph-brit00008.jpeg', alt: 'חגיגת ברית' },
-  { id: 19, url: '/img/photo/brit/ph-brit00009.jpeg', alt: 'תמונות משפחה' },
-  { id: 20, url: '/img/photo/brit/ph-brit00010.jpg', alt: 'צילום חגיגות' },
+  {
+    id: 1,
+    url: 'https://via.placeholder.com/600x600/3D1152/FFFFFF?text=%D7%97%D7%92%D7%99%D7%92%D7%AA+%D7%91%D7%A8%D7%99%D7%AA',
+    alt: 'חגיגת ברית מושלמת'
+  },
+  {
+    id: 2,
+    url: 'https://via.placeholder.com/600x600/A03078/FFFFFF?text=%D7%A2%D7%99%D7%A6%D7%95%D7%91+%D7%91%D7%9C%D7%95%D7%A0%D7%99%D7%9D',
+    alt: 'עיצוב בלונים מרהיב'
+  },
+  {
+    id: 3,
+    url: 'https://via.placeholder.com/600x600/D64B6A/FFFFFF?text=%D7%A6%D7%99%D7%9C%D7%95%D7%9D+%D7%9E%D7%92%D7%A0%D7%98%D7%99%D7%9D',
+    alt: 'צילום מגנטים מיידי'
+  },
+  {
+    id: 4,
+    url: 'https://via.placeholder.com/600x600/E8B15C/FFFFFF?text=%D7%91%D7%9C%D7%95%D7%A0%D7%99%D7%9D+%D7%9B%D7%97%D7%95%D7%9C%D7%99%D7%9D',
+    alt: 'בלונים כחולים לברית'
+  },
+  {
+    id: 5,
+    url: 'https://via.placeholder.com/600x600/FFF9F0/3D1152?text=%D7%A7%D7%99%D7%A9%D7%95%D7%98%D7%99+%D7%9E%D7%A1%D7%99%D7%91%D7%94',
+    alt: 'קישוטי מסיבה'
+  },
+  {
+    id: 6,
+    url: 'https://via.placeholder.com/600x600/3D1152/FFFFFF?text=%D7%A2%D7%99%D7%A6%D7%95%D7%91+%D7%9C%D7%AA%D7%99%D7%A0%D7%95%D7%A7',
+    alt: 'עיצוב לתינוק'
+  },
+  {
+    id: 7,
+    url: 'https://via.placeholder.com/600x600/A03078/FFFFFF?text=%D7%91%D7%9C%D7%95%D7%A0%D7%99%D7%9D+%D7%A4%D7%A1%D7%98%D7%9C',
+    alt: 'בלונים פסטל עדינים'
+  },
+  {
+    id: 8,
+    url: 'https://via.placeholder.com/600x600/D64B6A/FFFFFF?text=%D7%A6%D7%99%D7%9C%D7%95%D7%9D+%D7%A0%D7%99%D7%95%D7%91%D7%95%D7%A8%D7%9F',
+    alt: 'צילום ניובורן'
+  },
+  {
+    id: 9,
+    url: 'https://via.placeholder.com/600x600/E8B15C/FFFFFF?text=%D7%A7%D7%A9%D7%AA+%D7%91%D7%9C%D7%95%D7%A0%D7%99%D7%9D',
+    alt: 'קשת בלונים'
+  },
+  {
+    id: 10,
+    url: 'https://via.placeholder.com/600x600/FFF9F0/3D1152?text=%D7%A6%D7%99%D7%9C%D7%95%D7%9D+%D7%97%D7%92%D7%99%D7%92%D7%95%D7%AA',
+    alt: 'צילום חגיגות'
+  },
+  {
+    id: 11,
+    url: 'https://via.placeholder.com/600x600/3D1152/FFFFFF?text=%D7%A2%D7%99%D7%A6%D7%95%D7%91+%D7%97%D7%92%D7%99%D7%92%D7%99',
+    alt: 'עיצוב חגיגי לתינוקות'
+  },
+  {
+    id: 12,
+    url: 'https://via.placeholder.com/600x600/A03078/FFFFFF?text=%D7%A4%D7%99%D7%A0%D7%AA+%D7%A6%D7%99%D7%9C%D7%95%D7%9D',
+    alt: 'פינת צילום למסיבות'
+  },
+  {
+    id: 13,
+    url: 'https://via.placeholder.com/600x600/D64B6A/FFFFFF?text=%D7%91%D7%9C%D7%95%D7%A0%D7%99%D7%9D+%D7%9C%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D',
+    alt: 'עיצוב בלונים לאירועים'
+  },
+  {
+    id: 14,
+    url: 'https://via.placeholder.com/600x600/E8B15C/FFFFFF?text=%D7%9E%D7%A1%D7%99%D7%91%D7%AA+%D7%99%D7%9C%D7%93%D7%99%D7%9D',
+    alt: 'בלונים למסיבת ילדים'
+  },
+  {
+    id: 15,
+    url: 'https://via.placeholder.com/600x600/FFF9F0/3D1152?text=%D7%A1%D7%98%D7%90%D7%A4+%D7%A6%D7%99%D7%9C%D7%95%D7%9D',
+    alt: 'סטאפ צילום לאירועים'
+  },
+  {
+    id: 16,
+    url: 'https://via.placeholder.com/600x600/3D1152/FFFFFF?text=%D7%A7%D7%99%D7%A9%D7%95%D7%98%D7%99%D7%9D+%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9D',
+    alt: 'קישוטים צבעוניים למסיבה'
+  },
+  {
+    id: 17,
+    url: 'https://via.placeholder.com/600x600/A03078/FFFFFF?text=%D7%90%D7%91%D7%A0%D7%99+%D7%93%D7%A8%D7%9A',
+    alt: 'צילומי אבני דרך לתינוקות'
+  },
+  {
+    id: 18,
+    url: 'https://via.placeholder.com/600x600/D64B6A/FFFFFF?text=%D7%A8%D7%A7%D7%A2+%D7%9C%D7%97%D7%92%D7%99%D7%92%D7%95%D7%AA',
+    alt: 'רקע לחגיגות'
+  },
+  {
+    id: 19,
+    url: 'https://via.placeholder.com/600x600/E8B15C/FFFFFF?text=%D7%93%D7%A7%D7%95%D7%A8+%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D',
+    alt: 'דקור לאירועים'
+  },
+  {
+    id: 20,
+    url: 'https://via.placeholder.com/600x600/FFF9F0/3D1152?text=%D7%A4%D7%95%D7%98%D7%95%D7%96%D7%95%D7%9F',
+    alt: 'פוטוזון מעוצב'
+  }
 ];
 
 export function InfiniteCarousel() {
@@ -72,7 +151,7 @@ export function InfiniteCarousel() {
   useEffect(() => {
     const slideWidth = 100 / slidesToShow;
     const offset = -(currentIndex * slideWidth);
-
+    
     controls.start({
       x: `${offset}%`,
       transition: {
@@ -85,7 +164,7 @@ export function InfiniteCarousel() {
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const threshold = 50;
-
+    
     if (info.offset.x > threshold) {
       // Swipe right (previous)
       setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
@@ -95,11 +174,19 @@ export function InfiniteCarousel() {
     }
   };
 
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
   // Create infinite loop by duplicating images
   const displayImages = [...carouselImages, ...carouselImages, ...carouselImages];
 
   return (
-    <section
+    <section 
       className="py-12 bg-gradient-to-br from-[#faf8fb] to-white overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -112,6 +199,30 @@ export function InfiniteCarousel() {
         className="w-full"
       >
         <div className="relative w-full overflow-hidden">
+          {/* Previous Arrow */}
+          <motion.button
+            onClick={goToPrevious}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Previous slide"
+            style={{ color: '#3D1152' }}
+          >
+            <ChevronRight className="w-6 h-6" />
+          </motion.button>
+
+          {/* Next Arrow */}
+          <motion.button
+            onClick={goToNext}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Next slide"
+            style={{ color: '#3D1152' }}
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </motion.button>
+
           <motion.div
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -138,7 +249,7 @@ export function InfiniteCarousel() {
                     alt={image.alt}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#6b1a3d]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D1152]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
                     <p className="text-white text-center">{image.alt}</p>
                   </div>
                 </motion.div>
@@ -153,10 +264,11 @@ export function InfiniteCarousel() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex % carouselImages.length
-                ? 'bg-[#6b1a3d] w-6'
-                : 'bg-[#c9a9b8]/40 hover:bg-[#c9a9b8]'
-                }`}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex % carouselImages.length
+                  ? 'bg-[#3D1152] w-6'
+                  : 'bg-[#E8B15C]/40 hover:bg-[#E8B15C]'
+              }`}
               aria-label={`Перейти к слайду ${index + 1}`}
             />
           ))}
